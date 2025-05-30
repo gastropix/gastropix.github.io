@@ -363,6 +363,67 @@
 			font-style: normal;
 			color: rgba(0,0,0,0.7);
 		}
+		
+		/* Slider-Grundgerüst */
+		.testimonials-slider {
+		  position: relative;
+		  overflow: hidden;
+		  max-width: 800px;
+		  margin: 0 auto;
+		}
+
+		.slider-track {
+		  display: flex;
+		  transition: transform 0.3s ease;
+		}
+
+		.testimonial-item {
+		  flex: 0 0 100%;
+		  box-sizing: border-box;
+		  padding: 20px;
+		  border-left: 4px solid var(--primary-color);
+		  background-color: var(--background-color);
+		  text-align: left;
+		}
+
+		/* Pfeile */
+		.slider-arrow {
+		  position: absolute;
+		  top: 50%;
+		  transform: translateY(-50%);
+		  background: none;
+		  border: none;
+		  font-size: 2.5rem;
+		  color: var(--text-color);
+		  opacity: 0.6;
+		  cursor: pointer;
+		  padding: 0 10px;
+		  z-index: 2;
+		  transition: opacity 0.2s ease;
+		}
+		.slider-arrow:hover { opacity: 1; }
+		.slider-arrow.prev { left: 10px; }
+		.slider-arrow.next { right: 10px; }
+
+		/* Dots */
+		.slider-dots {
+		  display: flex;
+		  justify-content: center;
+		  margin-top: 15px;
+		}
+		.slider-dots .dot {
+		  width: 10px;
+		  height: 10px;
+		  background: #ccc;
+		  border-radius: 50%;
+		  margin: 0 5px;
+		  cursor: pointer;
+		  transition: background 0.2s ease;
+		}
+		.slider-dots .dot.active {
+		  background: var(--primary-color);
+		}
+
 
 		/* ========== KONTAKT ========== */
 		#contact {
@@ -526,18 +587,28 @@
     </section>
     <!-- Referenzen Abschnitt -->
     <section id="testimonials">
-        <h2>Referenzen</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"Die Zusammenarbeit mit [Dein Name] war ein voller Erfolg. Er hat es geschafft, die Eleganz und den Charme unseres LuxResort & Spa perfekt einzufangen. Seine Fotos vermitteln nicht nur die luxuriöse Atmosphäre unseres Hotels, sondern auch das besondere Wohlfühlambiente, das unsere Gäste schätzen. Besonders beeindruckt hat uns seine Liebe zum Detail und sein Blick für einzigartige Perspektiven. Dank seiner Bilder konnten wir unsere Buchungen über unsere Website und Social Media deutlich steigern. Wir freuen uns auf zukünftige Projekte"</p>
-                <cite>– LuxResort & Spa</cite>
-            </div>
-            <div class="testimonial">
-                <p>"Für unser Boutique-Hotel in den Alpen war es wichtig, authentische und einladende Bilder zu haben, die unsere Gäste emotional ansprechen. [Dein Name] hat genau das geliefert! Seine Bilder transportieren die Gemütlichkeit unserer Zimmer, die atemberaubende Bergkulisse und die Herzlichkeit unseres Services perfekt. Seine professionelle Arbeitsweise und sein kreativer Ansatz haben uns begeistert. Unsere Gäste buchen nun gezielter aufgrund der emotionalen Wirkung seiner Bilder – eine echte Bereicherung für unser Marketing!"</p>
-                <cite>– Alpenblick Mountain Lodge</cite>
-            </div>
-        </div>
-    </section>
+	  <h2>Referenzen</h2>
+	  <div class="testimonials-slider">
+		<!-- Track mit allen Slides -->
+		<div class="slider-track">
+		  <div class="testimonial-item">
+			<p>""Die Zusammenarbeit mit [Dein Name] war ein voller Erfolg. Er hat es geschafft, die Eleganz und den Charme unseres LuxResort & Spa perfekt einzufangen. Seine Fotos vermitteln nicht nur die luxuriöse Atmosphäre unseres Hotels, sondern auch das besondere Wohlfühlambiente, das unsere Gäste schätzen. Besonders beeindruckt hat uns seine Liebe zum Detail und sein Blick für einzigartige Perspektiven. Dank seiner Bilder konnten wir unsere Buchungen über unsere Website und Social Media deutlich steigern. Wir freuen uns auf zukünftige Projekte""</p>
+			<cite>– LuxResort & Spa</cite>
+		  </div>
+		  <div class="testimonial-item">
+			<p>"Für unser Boutique-Hotel in den Alpen war es wichtig, …"</p>
+			<cite>– Alpenblick Mountain Lodge</cite>
+		  </div>
+		  <!-- Weitere .testimonial-item hier -->
+		</div>
+		<!-- Navigation -->
+		<button class="slider-arrow prev" aria-label="Vorherige Referenz">❮</button>
+		<button class="slider-arrow next" aria-label="Nächste Referenz">❯</button>
+		<!-- Dots -->
+		<div class="slider-dots"></div>
+	  </div>
+	</section>
+
     <!-- Kontakt Abschnitt -->
     <section id="contact">
         <h2>Kontakt</h2>
@@ -786,6 +857,68 @@
 				if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			});
 		});
+		(function() {
+		  const track      = document.querySelector('.slider-track');
+		  const slides     = Array.from(track.children);
+		  const prevBtn    = document.querySelector('.slider-arrow.prev');
+		  const nextBtn    = document.querySelector('.slider-arrow.next');
+		  const dotsWrap   = document.querySelector('.slider-dots');
+		  let   current    = 0;
+		  let   startX     = 0;
+		  let   isDragging = false;
+
+	  // Dots anlegen
+	  slides.forEach((_, i) => {
+		const dot = document.createElement('div');
+		dot.className = 'dot' + (i === 0 ? ' active' : '');
+		dot.addEventListener('click', () => goTo(i));
+		dotsWrap.append(dot);
+	  });
+	  const dots = Array.from(dotsWrap.children);
+
+	  function update() {
+		track.style.transform = `translateX(-${current * 100}%)`;
+		dots.forEach((d,i) => d.classList.toggle('active', i === current));
+	  }
+
+	  prevBtn.addEventListener('click', () => {
+		current = (current - 1 + slides.length) % slides.length;
+		update();
+	  });
+	  nextBtn.addEventListener('click', () => {
+		current = (current + 1) % slides.length;
+		update();
+	  });
+
+	  // Swipe Events
+	  track.addEventListener('touchstart', e => {
+		startX = e.touches[0].clientX;
+		isDragging = true;
+		track.style.transition = 'none';
+	  });
+	  track.addEventListener('touchmove', e => {
+		if (!isDragging) return;
+		const delta = e.touches[0].clientX - startX;
+		track.style.transform = `translateX(${ -current*100 + (delta/window.innerWidth*100) }%)`;
+	  });
+	  track.addEventListener('touchend', e => {
+		isDragging = false;
+		track.style.transition = 'transform 0.3s ease';
+		const delta = e.changedTouches[0].clientX - startX;
+		if (Math.abs(delta) > window.innerWidth * 0.2) {
+		  current = delta < 0
+			? (current + 1) % slides.length
+			: (current - 1 + slides.length) % slides.length;
+		}
+		update();
+	  });
+
+	  function goTo(idx) {
+		current = idx;
+		update();
+	  }
+	})();
+
 	</script>
 </body>
 </html>
