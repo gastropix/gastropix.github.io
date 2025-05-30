@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Meta-Tags für Zeichenkodierung, Viewport und SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionelle Hotelfotografie für Tourismus und Kulinarik. Wir machen Aufnahmen während des Betriebs – jetzt anfragen!">
+    <meta name="keywords" content="Hotelfotografie, Tourismusfotografie, Kulinarikfotografie, Fotografie, Hotel, Restaurant">
+    <meta property="og:title" content="Hotelfotografie für Tourismus und Kulinarik">
+    <meta property="og:description" content="Professionelle Hotelfotografie für Tourismus und Kulinarik. Wir machen Aufnahmen während des Betriebs – jetzt anfragen!">
+    <meta property="og:image" content="https://www.deinewebsite.de/bilder/fotografie.jpg">
+    <meta property="og:url" content="https://www.deinewebsite.de">
+    <title>Hotelfotografie für Tourismus und Kulinarik</title>
+    <!-- Google Fonts für das Design -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Externe CSS-Datei -->
+		<style>
+		/* ========== BASISSTILE ========== */
+		@font-face {
+			font-family: 'Zapfino';
+			src: url('fonts/Zapfino.woff2') format('woff2'),
+				url('fonts/Zapfino.woff') format('woff'),
+				url('fonts/Zapfino.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		:root {
+			--primary-color: #CF8852;
+			--secondary-color: #000000;
+			--dark-color: #525333;
+			--background-color: #E8E7E3;
+			--text-color: #4B3621;
+			--header-height: 100vh;
+			--section-padding: 80px 20px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Playfair Display', serif;
+			margin: 0;
+			padding: 0;
+			color: var(--text-color);
+			background-color: var(--background-color);
+			line-height: 1.6;
+			transition: background-color 0.3s ease, color 0.3s ease;
+		}
+
+		/* ========== HEADER & NAVIGATION ========== */
+		header {
+			position: relative;
+			height: var(--header-height);
+			background: url('bilder/header.jpg') center/cover no-repeat;
+			color: white;
+			text-align: right;
+			padding: 200px 70px 0 0;
+		}
+
+		header h1 {
+			font-family: 'Zapfino', cursive;
+			font-size: 2.5em;
+			color: white;
+			margin-top: -50px;
+			margin-left: auto;
+			padding-right: 40px;
+			line-height: 2;
+			transform: perspective(400px) rotateX(5deg) rotateY(-15deg) rotateZ(0.5deg);
+			transform-origin: right center;
+			text-shadow: 
+				1px 1px 2px rgba(0,0,0,0.4),
+				3px 3px 5px rgba(0,0,0,0.2),
+				0 0 15px rgba(255,255,255,0.1);
+			background: linear-gradient(105deg, transparent, rgba(255,255,255,0.05) 50%, transparent);
+			background-clip: text;
+			-webkit-background-clip: text;
+		}
+
+		nav {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			background: rgba(82, 83, 51, 0.9);
+			padding: 15px 0;
+			text-align: center;
+			z-index: 2;
+		}
+
+		nav a {
+			margin: 0 20px;
+			color: white;
+			text-decoration: none;
+			font-size: 1.6em;
+			transition: color 0.3s ease;
+		}
+
+		nav a:hover {
+			color: var(--primary-color);
+		}
+
+		/* ========== SEKTIONSSTILE ========== */
+		section {
+			max-width: 1200px;
+			margin: auto;
+			padding: var(--section-padding);
+			text-align: center;
+			position: relative;
+			z-index: 1;
+		}
+
+		h2 {
+			font-size: 3em;
+			color: var(--text-color);
+			margin-bottom: 40px;
+		}
+
+		/* ========== ÜBER UNS ========== */
+		.about-container {
+			display: flex;
+			flex-direction: column;
+			gap: 40px;
+			margin-top: 40px;
+		}
+
+		.about-person {
+			display: flex;
+			gap: 20px;
+			background-color: var(--background-color);
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.about-image img {
+			width: 220px;
+			height: 220px;
+			border-radius: 10px;
+			object-fit: cover;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.about-image img:hover {
+			transform: scale(1.1);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+
+		.about-text {
+			flex: 1;
+			text-align: left;
+		}
+
+		.about-text h3 {
+			font-size: 1.8em;
+			margin: 0 0 10px;
+		}
+
+		.about-text .title {
+			font-size: 1.2em;
+			color: var(--primary-color);
+			margin-bottom: 15px;
+			display: block;
+		}
+
+		/* ========== PORTFOLIO & GALERIE ========== */
+		.portfolio-section {
+			background-color: var(--background-color);
+			padding: 25px;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.gallery {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 25px; /* Fester Abstand */
+			padding: 25px;
+		}
+
+		.gallery img {
+			width: 330px;  /* Feste Breite */
+			height: 220px; /* Feste Höhe (3:2) */
+			object-fit: cover; /* Schneidet Bilder ggf. zu */
+			border-radius: 8px; /* Optional: Abgerundete Ecken */
+			flex-shrink: 0; /* Verhindert Schrumpfen */
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			cursor: pointer;
+		}
+
+		.gallery img:hover {
+			transform: scale(1.05);
+			box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+		}
+
+		.gallery img:nth-child(n+13) {
+			display: none;
+		}
+
+		.load-more-btn {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 20px;
+			font-size: 1.2em;
+			color: white;
+			background-color: var(--primary-color);
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.load-more-btn:hover {
+			background-color: var(--secondary-color);
+		}
+
+		/* ========== LIGHTBOX ========== */
+		.lightbox {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.95);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+			opacity: 0;
+			transition: opacity 0.7s ease;
+		}
+
+		.lightbox.active {
+			display: flex;
+			opacity: 1;
+		}
+
+		.slider-container {
+			display: flex;
+			height: 100%;
+			width: 100%;
+			will-change: transform;
+		}
+
+		.slider-item {
+			flex: 0 0 100%;
+			min-width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.slider-item img {
+			max-width: 90%;
+			max-height: 90vh;
+			object-fit: contain;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		.lightbox-arrow {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			color: white;
+			opacity: 70%;
+			font-size: 5em;
+			cursor: pointer;
+			z-index: 1001;
+			background: none;
+			border: none;
+			padding: 20px;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+			user-select: none;         /* Standard */
+			-webkit-user-select: none; /* Safari/Chrome */
+			-moz-user-select: none;    /* Firefox */
+			-ms-user-select: none;     /* IE10+ */
+			pointer-events: auto;      /* Interaktion trotzdem möglich */
+		}
+
+		.lightbox-arrow:hover {
+			opacity: 1;
+			transform: translateY(-50%) scale(1.1);
+		}
+
+		.lightbox-arrow.prev { left: 30px; }
+		.lightbox-arrow.next { right: 30px; }
+		
+		.lightbox-arrow::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 200px;  /* Unsichtbarer Klickbereich */
+			height: 250px; /* Unsichtbarer Klickbereich */
+			transform: translate(-50%, -50%);
+			z-index: -1;
+		}
+		
+		.lightbox-close {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			font-size: 3rem;
+			color: white;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			z-index: 1002; /* Über den Pfeilen */
+			opacity: 70%;
+			transition: opacity 0.3s ease;
+			width: 50px;
+			height: 50px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+		}
+
+		.lightbox-close:hover {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+
+		/* Mobile Optimierung */
+		@media (max-width: 768px) {
+			.lightbox-close {
+				top: 10px;
+				right: 10px;
+				font-size: 2rem;
+				width: 40px;
+				height: 40px;
+			}
+		}
+
+		/* ========== REFERENZEN ========== */
+		.testimonials {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 20px;
+			padding: 40px;
+			background-color: var(--background-color);
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.testimonial {
+			text-align: left;
+			padding: 20px;
+			border-left: 4px solid var(--primary-color);
+			background-color: var(--background-color);
+		}
+
+		.testimonial p {
+			font-size: 1.2em;
+			margin: 0 0 15px;
+		}
+
+		.testimonial cite {
+			display: block;
+			font-style: normal;
+			color: rgba(0,0,0,0.7);
+		}
+
+		/* ========== KONTAKT ========== */
+		#contact {
+			background-color: var(--dark-color);
+			color: white;
+			padding: 60px 20px;
+			border-radius: 10px;
+			margin-top: 80px;
+		}
+
+		#contact h2 {
+			color: white;
+		}
+
+		.contact-link {
+			color: var(--primary-color);
+			text-decoration: none;
+			font-weight: bold;
+			transition: color 0.3s ease;
+		}
+
+		.contact-link:hover {
+			color: var(--secondary-color);
+		}
+
+		/* ========== FOOTER ========== */
+		footer {
+			background: var(--dark-color);
+			color: white;
+			text-align: center;
+			padding: 30px;
+			margin-top: 80px;
+		}
+
+		footer a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		/* ========== RESPONSIVE DESIGN ========== */
+		@media (max-width: 768px) {
+			header {
+				justify-content: center;
+				text-align: center;
+			}
+
+			header h1 {
+				font-size: 2em;
+				color: white;
+				margin-top: -25px;
+				
+			}
+
+			nav a {
+				font-size: 1.2em;
+				margin: 0 10px;
+			}
+
+			.about-person {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+
+			.about-image img {
+				width: 150px;
+				height: 150px;
+			}
+
+			.about-text {
+				text-align: center;
+			}
+
+			.gallery {
+				grid-template-columns: 1fr;
+			}
+
+			.lightbox-arrow {
+				font-size: 1.8em;
+				padding: 12px;
+			}
+
+			.lightbox-arrow.prev { left: 10px; }
+			.lightbox-arrow.next { right: 10px; }
+		}
+	</style>
+</head>
+<body>
+    <!-- Modal für vergrößerte Bilder -->
+    <div class="lightbox" id="lightbox">
+		<div class="slider-container" id="slider-container"></div>
+		<span class="lightbox-arrow prev" unselectable="on" onclick="event.stopPropagation(); changeImage(-1)">❮</span>
+		<span class="lightbox-arrow next" unselectable="on" onclick="event.stopPropagation(); changeImage(1)">❯</span>
+		<button class="lightbox-close" aria-label="Lightbox schließen">✕</button>
+	</div>
+
+
+    <!-- Hauptnavigation -->
+    <nav aria-label="Hauptnavigation">
+        <a href="#portfolio">Portfolio</a>
+		<a href="#about">Über uns</a>
+        <a href="#services">Leistungen</a>
+        <a href="#testimonials">Referenzen</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+    <!-- Header mit Titel -->
+    <header>
+        <h1>Hotel,<br>Tourismus<br>und Kulinarik</h1>
+    </header>
+    <!-- Portfolio Abschnitt -->
+	<section id="portfolio">
+		<h2>Portfolio</h2>
+		<div class="portfolio-section">
+			<div class="portfolio-gallery">
+				<div class="gallery" id="gallery"></div> <!-- Hier werden die Bilder dynamisch eingefügt -->
+				<button id="loadMore" class="load-more-btn">Weitere Bilder anzeigen</button>
+			</div>
+		</div>
+	</section>
+<!-- Über uns Abschnitt -->
+<section id="about">
+    <h2>Über uns</h2>
+    <p>Wir sind ein Team professioneller Fotografen, spezialisiert auf Hotelfotografie, Tourismus und Kulinarik. Unsere Leidenschaft ist es, die Atmosphäre und den Charme Ihrer Räumlichkeiten einzufangen – ob Hotel, Restaurant oder Veranstaltungsort. Wir arbeiten diskret und professionell, sodass wir Aufnahmen auch während des Betriebs machen können. So zeigen wir Ihr Unternehmen in seiner besten und authentischsten Form.</p>
+    
+    <div class="about-container">
+        <!-- Klaus Mitterhauser -->
+        <div class="about-person">
+            <div class="about-image">
+                <img src="bilder/portrait1.jpg" alt="Klaus Mitterhauser" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h3>Klaus Mitterhauser</h3>
+                <p class="title">Meisterfotograf</p>
+                <p>Mein Betrieb besteht bereits seit 2001. Als ehemaliger Absolvent einer Höheren Tourismusschule bringe ich viel Verständnis für die Gastronomie bei unseren Shootings mit. Unkomplizierte Abläufe, maximale Ergebnisse ohne den laufenden Betrieb aufzuhalten sowie Liebe zum Detail zeichnen unsere Arbeiten aus. Gerne beraten wir Sie auch bei der Planung Ihres individuellen Fotoshootings!</p>
+            </div>
+        </div>
+
+        <!-- Sebastian Pillinger -->
+        <div class="about-person">
+            <div class="about-image">
+                <img src="bilder/portrait2.jpg" alt="Sebastian Pillinger" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h3>Sebastian Pillinger</h3>
+                <p class="title">MSc.</p>
+                <p>Bereits vor meinem Masterstudium an der FH JOHANNEUM in Graz beschäftigte ich mich mit digitaler Bildbearbeitung, Mediendesign und Videoschnitt. Künstliche Intelligenz hat lange in der Fotografie Einzug gehalten und ich setze diese digitalen Instrumente als neue Hilfsmittel vorsichtig bei der Datenaufbereitung ein! Als Eventfotograf bei Kultur- und Sportveranstaltungen bin ich in ganz Österreich im Einsatz!</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Leistungen Abschnitt -->
+    <section id="services">
+        <h2>Leistungen</h2>
+        <ul style="list-style-type: none; font-size: 1.6em;">
+            <li>- Hotelfotografie</li>
+            <li>- Flugaufnahmen</li>
+            <li>- Food-Fotografie</li>
+            <li>- Video für Social Media</li>
+        </ul>
+    </section>
+    <!-- Referenzen Abschnitt -->
+    <section id="testimonials">
+        <h2>Referenzen</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Die Zusammenarbeit mit [Dein Name] war ein voller Erfolg. Er hat es geschafft, die Eleganz und den Charme unseres LuxResort & Spa perfekt einzufangen. Seine Fotos vermitteln nicht nur die luxuriöse Atmosphäre unseres Hotels, sondern auch das besondere Wohlfühlambiente, das unsere Gäste schätzen. Besonders beeindruckt hat uns seine Liebe zum Detail und sein Blick für einzigartige Perspektiven. Dank seiner Bilder konnten wir unsere Buchungen über unsere Website und Social Media deutlich steigern. Wir freuen uns auf zukünftige Projekte"</p>
+                <cite>– LuxResort & Spa</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Für unser Boutique-Hotel in den Alpen war es wichtig, authentische und einladende Bilder zu haben, die unsere Gäste emotional ansprechen. [Dein Name] hat genau das geliefert! Seine Bilder transportieren die Gemütlichkeit unserer Zimmer, die atemberaubende Bergkulisse und die Herzlichkeit unseres Services perfekt. Seine professionelle Arbeitsweise und sein kreativer Ansatz haben uns begeistert. Unsere Gäste buchen nun gezielter aufgrund der emotionalen Wirkung seiner Bilder – eine echte Bereicherung für unser Marketing!"</p>
+                <cite>– Alpenblick Mountain Lodge</cite>
+            </div>
+        </div>
+    </section>
+    <!-- Kontakt Abschnitt -->
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Für Professionelle Aufnahmen Ihres Hotels während dem Normalbetrieb:</p>
+        <p>Email: <span class="contact-link" onclick="copyToClipboard('foto@klaus-mitterhauser.at')">foto@klaus-mitterhauser.at</span></p>
+        <p>Telefon: <span class="contact-link" onclick="copyToClipboard('+43 664 5145364')">+43 664 5145364</span></p>
+        <p>
+            <p>Besuchen Sie die <a href="https://www.klaus-mitterhauser.at/" target="_blank" class="contact-link">Homepage von Klaus Mitterhauser</a> für weitere Informationen.</p>
+            <a href="https://www.instagram.com/Klaus_Mitterhauser/" target="_blank" class="contact-link">Instagram</a> | 
+            <a href="https://facebook.com/Klaus_Mitterhauser" target="_blank" class="contact-link">Facebook</a> | 
+            <a href="https://twitter.com/Klaus_Mitterhauser" target="_blank" class="contact-link">Twitter</a>
+        </p>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Klaus Mitterhauser – Alle Rechte vorbehalten</p>
+        <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+    </footer>
+    <!-- Externe JavaScript-Datei -->
+	
+	<script>
+		// Initialisiere Lightbox-Elemente
+		const lightbox = document.getElementById('lightbox');
+		const sliderContainer = document.getElementById('slider-container');
+		
+		const IMAGES_PER_LOAD = 9;
+		let visibleImages = 12; // Anfangs sichtbare Bilder
+		
+		// Dynamisches Einfügen der Bilder
+		const totalImages = 54;
+		const gallery = document.getElementById('gallery');
+		const loadMoreButton = document.getElementById('loadMore');
+
+		// Bildergalerie erstellen
+		for (let i = 1; i <= totalImages; i++) {
+			const img = document.createElement('img');
+			img.src = `bilder/gastro_${i.toString().padStart(2, '0')}.jpg`;
+			img.alt = `Bild ${i}`;
+			img.loading = 'lazy';
+			img.onclick = () => openLightbox(i - 1);
+			gallery.appendChild(img);
+		}
+		
+		function preloadNeighbors(index) {
+			const prevIndex = (index - 1 + images.length) % images.length;
+			const nextIndex = (index + 1) % images.length;
+			new Image().src = images[prevIndex]; // Browser cached diese automatisch
+			new Image().src = images[nextIndex];
+		}
+
+		// Lightbox Funktionen
+		let currentIndex = 0;
+		let images = [];
+		let isAnimating = false;
+		let touchStartX = 0;
+		let touchStartY = 0;
+		let currentPosition = 0;
+
+		function openLightbox(index) {
+			currentIndex = index;
+			preloadNeighbors(currentIndex);
+			images = Array.from(document.querySelectorAll('.gallery img'));
+			lightbox.classList.add('active');
+			document.body.style.overflow = 'hidden';
+			
+			// Slider vorbereiten
+			sliderContainer.innerHTML = '';
+			images.forEach((img, i) => {
+				const slide = document.createElement('div');
+				slide.className = 'slider-item';
+				slide.innerHTML = `<img src="${img.src}" alt="Bild ${i + 1}">`;
+				sliderContainer.appendChild(slide);
+			});
+			
+			currentPosition = -currentIndex * 100;
+			sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+		}
+
+		function closeLightbox() {
+			lightbox.classList.remove('active');
+			document.body.style.overflow = 'auto';
+		}
+
+		function changeImage(n, animate = false) {
+			const newIndex = (currentIndex + n + images.length) % images.length;
+			
+			if(animate) {
+				isAnimating = true;
+				sliderContainer.style.transition = 'transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1)';
+			} else {
+				sliderContainer.style.transition = 'none';
+			}
+
+			currentIndex = newIndex;
+			currentPosition = -currentIndex * 100;
+			sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+			preloadNeighbors(currentIndex);
+			
+			if(animate) {
+				sliderContainer.addEventListener('transitionend', () => {
+					isAnimating = false;
+				}, { once: true });
+			}
+		}
+
+		// Touch-Handling
+		function handleTouchStart(e) {
+			touchStartX = e.touches[0].clientX;
+			touchStartY = e.touches[0].clientY;
+			sliderContainer.style.transition = 'none';
+		}
+
+		function handleTouchMove(e) {
+			e.preventDefault();
+			if (isAnimating) return;
+			
+			const touchX = e.touches[0].clientX;
+			const touchY = e.touches[0].clientY;
+			const deltaX = touchX - touchStartX;
+			const deltaY = touchY - touchStartY;
+			const movePercentage = (deltaX / window.innerWidth) * 100;
+			let newPosition = currentPosition + movePercentage;
+			
+			if (Math.abs(deltaY) > Math.abs(deltaX)) {
+				e.preventDefault();
+				sliderContainer.style.transform = `translateY(${deltaY}px)`; // Bild bewegt sich mit
+				return;
+			}
+			
+			// Endlos-Scroll Logik
+			if(currentIndex === 0 && newPosition > 0) newPosition = -images.length * 100 + movePercentage;
+			if(currentIndex === images.length-1 && newPosition < -currentIndex * 100) newPosition = 100 + movePercentage;
+			
+			sliderContainer.style.transform = `translateX(${newPosition}%)`;
+		}
+
+		function handleTouchEnd(e) {
+			const endX = e.changedTouches[0].clientX;
+			const endY = e.changedTouches[0].clientY;
+			const deltaX = endX - touchStartX;
+			const deltaY = endY - touchStartY;
+
+			// Vertikales Wischen (Schließen bei >50px Bewegung)
+			if(Math.abs(deltaY) > 50) {
+				// Berechne Wischgeschwindigkeit für Animation
+				const velocity = Math.abs(deltaY) / (Date.now() - touchStartTime);
+				
+				// Füge CSS-Transition mit Geschwindigkeit hinzu
+				lightbox.style.transition = `opacity ${Math.min(0.3, 100/velocity)}s ease`;
+				closeLightbox();
+				return;
+			}
+
+			// Horizontales Wischen
+			if(Math.abs(deltaX) > window.innerWidth * 0.1) { // 10% der Bildschirmbreite
+				const direction = deltaX > 0 ? -1 : 1;
+				changeImage(direction, true);
+			} else {
+				sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+			}
+		}
+		
+		// Touch-Start mit Zeitstempel
+		let touchStartTime;
+		function handleTouchStart(e) {
+			touchStartX = e.touches[0].clientX;
+			touchStartY = e.touches[0].clientY;
+			touchStartTime = Date.now();
+			sliderContainer.style.transition = 'none';
+		}
+
+		// Event Listener
+		lightbox.addEventListener('touchstart', handleTouchStart);
+		lightbox.addEventListener('touchmove', handleTouchMove);
+		lightbox.addEventListener('touchend', handleTouchEnd);
+
+		// Klick schließt Lightbox
+		lightbox.addEventListener('click', (e) => {
+			const isArrow = e.target.closest('.prev, .next');
+			if (!isArrow) {
+				closeLightbox();
+			}
+		});
+		
+		// Verhindern, dass Klicks auf die Pfeile die Lightbox schließen
+		document.querySelectorAll('.prev, .next').forEach(button => {
+			button.addEventListener('click', (e) => {
+				e.stopPropagation();
+			});
+		});
+
+
+		// Tastatursteuerung
+		document.addEventListener('keydown', (e) => {
+			if(lightbox.classList.contains('active')) {
+				if(e.key === 'ArrowLeft') changeImage(-1);
+				if(e.key === 'ArrowRight') changeImage(1);
+				if(e.key === 'Escape') closeLightbox();
+			}
+		});
+		
+		// Close-Funktion vereinfachen
+		function closeLightbox() {
+			lightbox.classList.remove('active');
+			document.body.style.overflow = 'auto';
+		}
+
+
+		// Weitere Funktionen (Load More Button, Smooth Scroll, etc.)
+		loadMoreButton.addEventListener('click', () => {
+        const allImages = Array.from(document.querySelectorAll('.gallery img'));
+        
+        // Nächsten Block anzeigen
+        for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
+            if (allImages[i]) {
+                allImages[i].style.display = 'block';
+            }
+        }
+
+        visibleImages += IMAGES_PER_LOAD;
+
+        // Button verstecken wenn alle Bilder sichtbar
+        if (visibleImages >= allImages.length) {
+            loadMoreButton.style.display = 'none';
+        }
+        
+        // Optional: Smooth Scroll zum neuen Block
+        allImages[visibleImages - 1]?.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'nearest' 
+        });
+    });
+
+		function copyToClipboard(text) {
+			navigator.clipboard.writeText(text).then(() => {
+				alert('Kopiert: ' + text);
+			}).catch(() => {
+				alert('Kopieren fehlgeschlagen: ' + text);
+			});
+		}
+
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function(e) {
+				e.preventDefault();
+				const target = document.getElementById(this.getAttribute('href').substring(1));
+				if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			});
+		});
+	</script>
+</body>
+</html>
