@@ -334,6 +334,106 @@
 				height: 40px;
 			}
 		}
+		
+		/* ==== Abschnitt: Leistungen (Service-Karten) ==== */
+		.services-section {
+		  background-color: var(--background-color);
+		  padding: var(--section-padding);
+		  text-align: center;
+		}
+
+		.services-section h2 {
+		  font-size: 3em;
+		  color: var(--text-color);
+		  margin-bottom: 50px;
+		}
+
+		/* Container, in dem die Karten als Grid dargestellt werden */
+		.services-container {
+		  display: grid;
+		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		  gap: 40px;
+		  max-width: 1200px;
+		  margin: 0 auto;
+		}
+
+		/* Einzelne Service-Karte */
+		.service-item {
+		  background-color: white;
+		  border-radius: 12px;
+		  padding: 25px 20px;
+		  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+		  transition: transform 0.3s ease, box-shadow 0.3s ease;
+		  display: flex;
+		  flex-direction: column;
+		  align-items: center;
+		  text-align: center;
+		}
+
+		/* Effekt: leichte Vergrößerung und Schatten beim Hover */
+		.service-item:hover {
+		  transform: translateY(-5px);
+		  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+		}
+
+		/* Icon in der Karte */
+		.service-icon {
+		  width: 100%;
+		  height: auto;
+		  margin-bottom: 20px;
+		  
+		}
+
+		.service-icon img {
+		  width: 100%;
+		  height: 100%;
+		  object-fit: contain;
+		  filter: brightness(0.8); /* leicht neutraler Look */
+		  transition: filter 0.5s ease;
+		  border-radius: 12px;
+		}
+
+		/* Icon beim Hover in voller Farbe */
+		.service-item:hover .service-icon img {
+		  filter: grayscale(0%) brightness(1);
+		}
+
+		/* Titel innerhalb der Karte */
+		.service-item h3 {
+		  font-size: 1.8em;
+		  color: var(--secondary-color);
+		  margin: 0 0 15px;
+		}
+
+		/* Beschreibungstext */
+		.service-item p {
+		  font-size: 1.1em;
+		  color: var(--text-color);
+		  line-height: 1.5;
+		  margin: 0;
+		}
+
+		/* ===== Responsive Anpassungen ===== */
+		@media (max-width: 768px) {
+		  .services-section {
+			padding: 60px 20px;
+		  }
+		  .service-item {
+			padding: 20px 15px;
+		  }
+		  .service-icon {
+			width: 60%;
+		    height: auto;
+			margin-bottom: 15px;
+		  }
+		  .service-item h3 {
+			font-size: 1.5em;
+		  }
+		  .service-item p {
+			font-size: 1em;
+		  }
+		}
+
 
 		/* ========== REFERENZEN ========== */
 		.testimonials {
@@ -579,15 +679,45 @@
 	</section>
 
     <!-- Leistungen Abschnitt -->
-    <section id="services">
-        <h2>Leistungen</h2>
-        <ul style="list-style-type: none; font-size: 1.6em;">
-            <li>- Hotelfotografie</li>
-            <li>- Flugaufnahmen</li>
-            <li>- Food-Fotografie</li>
-            <li>- Video für Social Media</li>
-        </ul>
-    </section>
+    <section id="services" class="services-section">
+	  <h2>Leistungen</h2>
+	  <div class="services-container">
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<!-- Platzhalter-Icon, z.B. einfärbtes SVG oder PNG -->
+			<img src="bilder/gastro_50.jpg" alt="Hotelfotografie Icon" loading="lazy">
+		  </div>
+		  <h3>Hotelfotografie</h3>
+		  <p>Fesselnde Aufnahmen von Lobby, Zimmern &amp; Außenbereich – wir fangen die Atmosphäre Ihres Hauses authentisch ein, auch während des laufenden Betriebs.</p>
+		</div>
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<img src="bilder/gastro_06.jpg" alt="Flugaufnahmen Icon" loading="lazy">
+		  </div>
+		  <h3>Flugaufnahmen</h3>
+		  <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
+		</div>
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<img src="bilder/gastro_30.jpg" alt="Food-Fotografie Icon" loading="lazy">
+		  </div>
+		  <h3>Food-Fotografie</h3>
+		  <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen: Vom Teller­arrangement bis zum stimmungs­vollen Ambiente des Restaurants.</p>
+		</div>
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<img src="icons/video-icon.svg" alt="Video für Social Media Icon" loading="lazy">
+		  </div>
+		  <h3>Video für Social Media</h3>
+		  <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
+		</div>
+		
+	  </div>
+	</section>
 	
     <!-- Referenzen Abschnitt -->
     <section id="testimonials">
@@ -596,7 +726,7 @@
 		<!-- Track mit allen Slides -->
 		<div class="slider-track">
 		  <div class="testimonial-item">
-			<p>""„Klaus und Sebastian kamen nach einem Vorgespräch mit einem fix fertigen Drehbuch zu uns ins Haus. Während des laufenden Betriebes portraitierten sie mit viel Engagement 2 Tage lang völlig unkompliziert unser Hotel! Mit den fertigen Fotos sind wir mehr als zufrieden! Improvisationstalent, Verständnis für die Gastro und tolle Ideen - das zeichnet die beiden aus!“</p>
+			<p>„Klaus und Sebastian kamen nach einem Vorgespräch mit einem fix fertigen Drehbuch zu uns ins Haus. Während des laufenden Betriebes portraitierten sie mit viel Engagement 2 Tage lang völlig unkompliziert unser Hotel! Mit den fertigen Fotos sind wir mehr als zufrieden! Improvisationstalent, Verständnis für die Gastro und tolle Ideen - das zeichnet die beiden aus!“</p>
 			<cite>– Heinz Gasparini, GF Hotel Bad Hofgastein, PRO GE</cite>
 		  </div>
 		  <!-- Weitere .testimonial-item hier -->
