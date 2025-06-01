@@ -586,6 +586,34 @@
 		  vertical-align: middle;
 		  margin: 0 8px;         /* optional: Abstand zu den Nachbarn */
 		}
+		
+		.instagram-links {
+		  display: flex;
+		  justify-content: center;
+		  gap: 20px; /* Abstand zwischen den beiden Icons */
+		  margin-top: 20px; /* optional: Abstand nach oben */
+		}
+
+		/* Jeder Link besteht aus Icon + Name, übereinander zentriert */
+		.instagram {
+		  display: flex;
+		  flex-direction: column;
+		  align-items: center;
+		  text-decoration: none;
+		}
+
+		/* Größe des Instagram-Icons */
+		.contact-icon {
+		  width: 40px;     /* anpassen, falls du es kleiner/größer möchtest */
+		  height: auto;
+		}
+
+		/* Beschriftung unter dem Icon */
+		.instagram-label {
+		  margin-top: 8px;
+		  font-size: 0.9em;
+		  color: var(--primary-color); /* oder eine andere Wunschfarbe */
+		}
 
 		/* ========== FOOTER ========== */
 		footer {
@@ -804,6 +832,11 @@
             <p>Besuchen Sie die <a href="https://www.klaus-mitterhauser.at/" target="_blank" class="contact-link">Homepage von Klaus Mitterhauser</a> für weitere Informationen.</p>
             <a href="https://www.instagram.com/Klaus_Mitterhauser/" target="_blank" class="contact-link">
 				<img src="bilder/insta_w.png" alt="Instagram" class="contact-icon">
+				<span class="instagram-label">Klaus</span>
+			</a> 
+			<a href="https://www.instagram.com/vergrazt/" target="_blank" class="contact-link">
+				<img src="bilder/insta_w.png" alt="Instagram" class="contact-icon">
+				<span class="instagram-label">Sebastian</span>
 			</a> 
         </p>
     </section>
