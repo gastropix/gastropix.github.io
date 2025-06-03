@@ -340,180 +340,195 @@
 		}
 		
 		/* ==== Abschnitt: Leistungen (Service-Karten) ==== */
-		.services-section {
-		  background-color: var(--background-color);
-		  padding: var(--section-padding);
-		  text-align: center;
-		}
+/* ==== Abschnitt: Leistungen (Service-Karten) ==== */
+.services-section {
+  background-color: var(--background-color);
+  padding: var(--section-padding);
+  text-align: center;
+}
 
-		.services-section h2 {
-		  font-size: 3em;
-		  color: var(--text-color);
-		  margin-bottom: 50px;
-		}
+.services-section h2 {
+  font-size: 3em;
+  color: var(--text-color);
+  margin-bottom: 50px;
+}
 
-		/* Desktop: Grid-Layout mit 4 Spalten */
-		.services-container {
-		  display: grid;
-		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-		  gap: 40px;
-		  max-width: 1200px;
-		  margin: 0 auto;
-		}
+/* Desktop: Grid-Layout mit 4 Spalten */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-		/* Einzelne Service-Karte */
-		.service-item {
-		  background-color: white;
-		  border-radius: 12px;
-		  padding: 25px 20px;
-		  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-		  transition: transform 0.3s ease, box-shadow 0.3s ease;
-		  display: flex;
-		  flex-direction: column;
-		  align-items: center;
-		  text-align: center;
-		}
+/* Einzelne Service-Karte */
+.service-item {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-		/* Effekt: leichte Vergrößerung und Schatten beim Hover */
-		.service-item:hover {
-		  transform: translateY(-5px);
-		  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-		}
+/* Hover-Effekt (Desktop) */
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
 
-		/* Icon in der Karte */
-		.service-icon {
-		  width: 100%;
-		  height: auto;
-		  margin-bottom: 20px;
-		}
+/* ICON- / VIDEO-CONTAINER: festes Seitenverhältnis 16:9 */
+.service-icon {
+  width: 100%;
+  aspect-ratio: 3 / 2;    
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
 
-		.service-icon img {
-		  width: 100%;
-		  height: 100%;
-		  object-fit: contain;
-		  filter: brightness(0.8); /* leicht neutraler Look */
-		  transition: filter 0.5s ease;
-		  border-radius: 12px;
-		}
+/* BILD: füllt Container komplett, wird ggf. beschnitten */
+.service-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* Bild schneidet überflüssige Ränder ab */
+  transition: filter 0.5s ease;
+  border-radius: 12px;
+  filter: brightness(0.8); /* leicht neutraler Look */
+}
 
-		/* Icon beim Hover in voller Farbe */
-		.service-item:hover .service-icon img {
-		  filter: grayscale(0%) brightness(1);
-		}
+/* Hover: Bild wieder volle Helligkeit */
+.service-item:hover .service-icon img {
+  filter: grayscale(0%) brightness(1);
+}
 
-		/* Titel innerhalb der Karte */
-		.service-item h3 {
-		  font-size: 1.8em;
-		  color: var(--secondary-color);
-		  margin: 0 0 15px;
-		}
+/* VIDEO-CONTAINER: schwarzer Hintergrund, Video mittig, Letterboxing */
+.service-icon .video-container {
+  width: 100%;
+  height: 100%;
+  background-color: #000;   /* schwarz für oben/unten Balken */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-		/* Beschreibungstext */
-		.service-item p {
-		  font-size: 1.1em;
-		  color: var(--text-color);
-		  line-height: 1.5;
-		  margin: 0;
-		}
+/* Iframe (Video): so groß wie möglich, behält Seitenverhältnis bei */
+.service-icon .video-container iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
 
-		/* ===== YouTube-Video responsiv in der Service-Card ===== */
-		.video-container {
-		  position: relative;
-		  width: 100%;
-		  /* 16:9-Verhältnis: Höhe = 56.25% der Breite */
-		  padding-bottom: 56.25%;
-		  overflow: hidden;
-		  border-radius: 12px;               /* Gleiche Rundungen wie bei .service-icon img */
-		  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-		}
+/* Titel innerhalb der Karte */
+.service-item h3 {
+  font-size: 1.8em;
+  color: var(--secondary-color);
+  margin: 0 0 15px;
+}
 
-		.video-container iframe {
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		  width: 100%;
-		  height: 100%;
-		}
+/* Beschreibungstext */
+.service-item p {
+  font-size: 1.1em;
+  color: var(--text-color);
+  line-height: 1.5;
+  margin: 0;
+}
 
-		/* Optional: leichtes „Heben“ beim Hover, analog zu den Bildern */
-		.service-item:hover .video-container {
-		  transform: translateY(-2px);
-		  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-		  transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
+/* ===== Responsive Anpassungen (Mobile / max-width: 768px) ===== */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 60px 20px;
+  }
 
-		/* ===== Responsive Anpassungen (Mobile / max-width: 768px) ===== */
-		@media (max-width: 768px) {
-		  .services-section {
-			padding: 60px 20px;
-		  }
+  /* Container: aus Grid → Flex mit Scroll-Snap */
+  .services-container {
+    display: flex;
+    flex-wrap: nowrap;                  /* keine Zeilenumbrüche */
+    overflow-x: auto;                   /* horizontal scrollen */
+    scroll-snap-type: x mandatory;      /* Snap-Verhalten: horizontal, verpflichtend */
+    -webkit-overflow-scrolling: touch;  /* iOS-Smooth-Scroll */
+    gap: 0;                             /* keine Lücken (jede Karte füllt 100%) */
+    margin: 0;
+    padding: 0;
+  }
 
-		  /* Container: aus Grid → Flex mit Scroll-Snap */
-		  .services-container {
-			display: flex;
-			flex-wrap: nowrap;                  /* Keine Zeilenumbrüche */
-			overflow-x: auto;                   /* Horizontal scrollen */
-			scroll-snap-type: x mandatory;      /* Snap-Typ: horizontal, verpflichtend */
-			-webkit-overflow-scrolling: touch;  /* iOS-Smooth-Scroll */
-			gap: 0;                             /* Keine Lücken, jede Karte 100% breit */
-			margin: 0;
-			padding: 0;
-		  }
+  /* Jede Karte nimmt exakt 100% des Viewports ein */
+  .service-item {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    scroll-snap-align: start;   /* Snap-Punkt am Anfang jeder Karte */
+    padding: 20px 15px;
+    margin: 0;
+  }
 
-		  /* Jede Karte nimmt exakt 100% der Viewport-Breite ein */
-		  .service-item {
-			flex: 0 0 100%;
-			box-sizing: border-box;
-			scroll-snap-align: start;  /* Snap-Punkt am Anfang jeder Karte */
-			padding: 20px 15px;
-			margin: 0;
-		  }
+  /* Icon-Container behält ab 768px trotzdem 16:9 bei */
+  .service-icon {
+	width: 78%;            /* Breite auf 80% setzen */
+    margin: 0 auto;        /* zentrieren */
+    aspect-ratio: 3 / 2;
+	height: auto;	
+    margin-bottom: 15px;
+  }
 
-		  .service-icon {
-			width: 60%;
-			height: auto;
-			margin-bottom: 15px;
-		  }
+  /* Bild: füllt weiterhin Container (object-fit: cover) */
+  .service-icon img {
+    object-fit: cover;
+  }
 
-		  .service-item h3 {
-			font-size: 1.5em;
-		  }
+  /* Video-Container: schwarzer Hintergrund bleibt */
+  .service-icon .video-container {
+    background-color: #000;
+  }
 
-		  .service-item p {
-			font-size: 1em;
-		  }
+  .service-icon .video-container iframe {
+    
+    max-height: 100%;
+  }
 
-		  /* Punkt-Navigation (Indicators) */
-		  .carousel-indicators {
-			display: flex;
-			justify-content: center;
-			margin-top: 20px;
-		  }
+  .service-item h3 {
+    font-size: 1.5em;
+  }
 
-		  .carousel-indicators .dot {
-			height: 10px;
-			width: 10px;
-			margin: 0 5px;
-			background-color: #ccc;
-			border-radius: 50%;
-			display: inline-block;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		  }
+  .service-item p {
+    font-size: 1em;
+  }
 
-		  .carousel-indicators .dot.active {
-			background-color: var(--secondary-color);
-		  }
+  /* Punkt-Navigation (Indicators) */
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 
-		  /* Scrollbar bei Mobile unsichtbar machen (optional) */
-		  .services-container::-webkit-scrollbar {
-			display: none;
-		  }
-		  .services-container {
-			-ms-overflow-style: none; /* IE/Edge */
-			scrollbar-width: none;    /* Firefox */
-		  }
-		}
+  .carousel-indicators .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-indicators .dot.active {
+    background-color: var(--secondary-color);
+  }
+
+  /* Scrollbar bei Mobile unsichtbar machen (optional) */
+  .services-container::-webkit-scrollbar {
+    display: none;
+  }
+  .services-container {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+}
+
+
 
 
 
@@ -798,62 +813,65 @@
 
     <!-- Leistungen Abschnitt -->
 	<section id="services" class="services-section">
-	  <h2>Leistungen</h2>
+  <h2>Leistungen</h2>
 
-	  <!-- Services-Container: Desktop = Grid, Mobile = Scroll-Snap -->
-	  <div class="services-container">
-		<div class="service-item">
-		  <div class="service-icon">
-			<img src="bilder/gastro_50.jpg" alt="Hotelfotografie Icon" loading="lazy">
-		  </div>
-		  <h3>Hotelfotografie</h3>
-		  <p>Fesselnde Aufnahmen von Lobby, Zimmern &amp; Außenbereich – wir fangen die Atmosphäre Ihres Hauses authentisch ein, auch während des laufenden Betriebs.</p>
-		</div>
+  <!-- Services-Container: Desktop=Grid, Mobile=Scroll-Snap -->
+  <div class="services-container">
+    <!-- 1. Hotelfotografie -->
+    <div class="service-item">
+      <div class="service-icon">
+        <img src="bilder/gastro_50.jpg" alt="Hotelfotografie Icon" loading="lazy">
+      </div>
+      <h3>Hotelfotografie</h3>
+      <p>Fesselnde Aufnahmen von Lobby, Zimmern &amp; Außenbereich – wir fangen die Atmosphäre Ihres Hauses authentisch ein, auch während des laufenden Betriebs.</p>
+    </div>
 
-		<div class="service-item">
-		  <div class="service-icon">
-			<img src="bilder/gastro_06.jpg" alt="Flugaufnahmen Icon" loading="lazy">
-		  </div>
-		  <h3>Flugaufnahmen</h3>
-		  <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
-		</div>
+    <!-- 2. Flugaufnahmen -->
+    <div class="service-item">
+      <div class="service-icon">
+        <img src="bilder/gastro_06.jpg" alt="Flugaufnahmen Icon" loading="lazy">
+      </div>
+      <h3>Flugaufnahmen</h3>
+      <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
+    </div>
 
-		<div class="service-item">
-		  <div class="service-icon">
-			<img src="bilder/gastro_30.jpg" alt="Food-Fotografie Icon" loading="lazy">
-		  </div>
-		  <h3>Food-Fotografie</h3>
-		  <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen: Vom Teller­arrangement bis zum stimmungs­vollen Ambiente des Restaurants.</p>
-		</div>
+    <!-- 3. Food-Fotografie -->
+    <div class="service-item">
+      <div class="service-icon">
+        <img src="bilder/gastro_30.jpg" alt="Food-Fotografie Icon" loading="lazy">
+      </div>
+      <h3>Food-Fotografie</h3>
+      <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen: Vom Teller­arrangement bis zum stimmungs­vollen Ambiente des Restaurants.</p>
+    </div>
 
-		<div class="service-item">
-		  <div class="service-icon">
-			<div class="video-container">
-			  <iframe
-				width="560"
-				height="315"
-				src="https://www.youtube.com/embed/ZPsUzqXITGg?si=e0VXUXF1lUyr5uDW"
-				title="YouTube video player"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin"
-				allowfullscreen>
-			  </iframe>
-			</div>
-		  </div>
-		  <h3>Video für Social Media</h3>
-		  <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
-		</div>
-	  </div>
+    <!-- 4. Video für Social Media -->
+    <div class="service-item">
+      <div class="service-icon">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/ZPsUzqXITGg?si=e0VXUXF1lUyr5uDW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <h3>Video für Social Media</h3>
+      <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
+    </div>
+  </div>
 
-	  <!-- Punkt-Navigation unterhalb des Carousels -->
-	  <div class="carousel-indicators">
-		<span class="dot active" data-index="0"></span>
-		<span class="dot" data-index="1"></span>
-		<span class="dot" data-index="2"></span>
-		<span class="dot" data-index="3"></span>
-	  </div>
-	</section>
+  <!-- Punkt-Navigation unterhalb des Carousels -->
+  <div class="carousel-indicators">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
+  </div>
+</section>
+
 
 	
     <!-- Referenzen Abschnitt -->
@@ -1202,7 +1220,7 @@
     const container = document.querySelector('.services-container');
     const dots = document.querySelectorAll('.carousel-indicators .dot');
 
-    /* Funktion: Setzt die .active-Klasse auf den aktuellen Punkt */
+    /* Setzt die .active-Klasse auf den aktuellen Punkt */
     function updateActiveDot(index) {
       dots.forEach(dot => dot.classList.remove('active'));
       if (dots[index]) {
