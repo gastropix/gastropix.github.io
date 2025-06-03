@@ -352,7 +352,7 @@
 		  margin-bottom: 50px;
 		}
 
-		/* Container, in dem die Karten als Grid dargestellt werden */
+		/* Desktop: Grid-Layout mit 4 Spalten */
 		.services-container {
 		  display: grid;
 		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -385,7 +385,6 @@
 		  width: 100%;
 		  height: auto;
 		  margin-bottom: 20px;
-		  
 		}
 
 		.service-icon img {
@@ -416,7 +415,7 @@
 		  line-height: 1.5;
 		  margin: 0;
 		}
-		
+
 		/* ===== YouTube-Video responsiv in der Service-Card ===== */
 		.video-container {
 		  position: relative;
@@ -443,26 +442,80 @@
 		  transition: transform 0.3s ease, box-shadow 0.3s ease;
 		}
 
-		/* ===== Responsive Anpassungen ===== */
+		/* ===== Responsive Anpassungen (Mobile / max-width: 768px) ===== */
 		@media (max-width: 768px) {
 		  .services-section {
 			padding: 60px 20px;
 		  }
-		  .service-item {
-			padding: 20px 15px;
+
+		  /* Container: aus Grid → Flex mit Scroll-Snap */
+		  .services-container {
+			display: flex;
+			flex-wrap: nowrap;                  /* Keine Zeilenumbrüche */
+			overflow-x: auto;                   /* Horizontal scrollen */
+			scroll-snap-type: x mandatory;      /* Snap-Typ: horizontal, verpflichtend */
+			-webkit-overflow-scrolling: touch;  /* iOS-Smooth-Scroll */
+			gap: 0;                             /* Keine Lücken, jede Karte 100% breit */
+			margin: 0;
+			padding: 0;
 		  }
+
+		  /* Jede Karte nimmt exakt 100% der Viewport-Breite ein */
+		  .service-item {
+			flex: 0 0 100%;
+			box-sizing: border-box;
+			scroll-snap-align: start;  /* Snap-Punkt am Anfang jeder Karte */
+			padding: 20px 15px;
+			margin: 0;
+		  }
+
 		  .service-icon {
 			width: 60%;
-		    height: auto;
+			height: auto;
 			margin-bottom: 15px;
 		  }
+
 		  .service-item h3 {
 			font-size: 1.5em;
 		  }
+
 		  .service-item p {
 			font-size: 1em;
 		  }
+
+		  /* Punkt-Navigation (Indicators) */
+		  .carousel-indicators {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		  }
+
+		  .carousel-indicators .dot {
+			height: 10px;
+			width: 10px;
+			margin: 0 5px;
+			background-color: #ccc;
+			border-radius: 50%;
+			display: inline-block;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		  }
+
+		  .carousel-indicators .dot.active {
+			background-color: var(--secondary-color);
+		  }
+
+		  /* Scrollbar bei Mobile unsichtbar machen (optional) */
+		  .services-container::-webkit-scrollbar {
+			display: none;
+		  }
+		  .services-container {
+			-ms-overflow-style: none; /* IE/Edge */
+			scrollbar-width: none;    /* Firefox */
+		  }
 		}
+
+
 
 
 		/* ========== REFERENZEN ========== */
@@ -580,13 +633,6 @@
 			color: var(--secondary-color);
 		}
 		
-		.contact-icon {
-		  width: 36px;           /* oder 30px, 32px – je nachdem, wie groß das Icon sein soll */
-		  height: auto;
-		  vertical-align: middle;
-		  margin: 0 8px;         /* optional: Abstand zu den Nachbarn */
-		}
-		
 		.instagram-links {
 		  display: flex;
 		  justify-content: center;
@@ -606,6 +652,8 @@
 		.contact-icon {
 		  width: 40px;     /* anpassen, falls du es kleiner/größer möchtest */
 		  height: auto;
+		  vertical-align: middle;
+		  margin: 0 8px;
 		}
 
 		/* Beschriftung unter dem Icon */
@@ -749,19 +797,19 @@
 	</section>
 
     <!-- Leistungen Abschnitt -->
-    <section id="services" class="services-section">
+	<section id="services" class="services-section">
 	  <h2>Leistungen</h2>
+
+	  <!-- Services-Container: Desktop = Grid, Mobile = Scroll-Snap -->
 	  <div class="services-container">
-		
 		<div class="service-item">
 		  <div class="service-icon">
-			<!-- Platzhalter-Icon, z.B. einfärbtes SVG oder PNG -->
 			<img src="bilder/gastro_50.jpg" alt="Hotelfotografie Icon" loading="lazy">
 		  </div>
 		  <h3>Hotelfotografie</h3>
 		  <p>Fesselnde Aufnahmen von Lobby, Zimmern &amp; Außenbereich – wir fangen die Atmosphäre Ihres Hauses authentisch ein, auch während des laufenden Betriebs.</p>
 		</div>
-		
+
 		<div class="service-item">
 		  <div class="service-icon">
 			<img src="bilder/gastro_06.jpg" alt="Flugaufnahmen Icon" loading="lazy">
@@ -769,7 +817,7 @@
 		  <h3>Flugaufnahmen</h3>
 		  <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
 		</div>
-		
+
 		<div class="service-item">
 		  <div class="service-icon">
 			<img src="bilder/gastro_30.jpg" alt="Food-Fotografie Icon" loading="lazy">
@@ -777,34 +825,36 @@
 		  <h3>Food-Fotografie</h3>
 		  <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen: Vom Teller­arrangement bis zum stimmungs­vollen Ambiente des Restaurants.</p>
 		</div>
-		
+
 		<div class="service-item">
 		  <div class="service-icon">
 			<div class="video-container">
 			  <iframe
-				<iframe width="560"
+				width="560"
 				height="315"
 				src="https://www.youtube.com/embed/ZPsUzqXITGg?si=e0VXUXF1lUyr5uDW"
 				title="YouTube video player"
 				frameborder="0"
-				allow="accelerometer;
-				autoplay;
-				clipboard-write;
-				encrypted-media;
-				gyroscope;
-				picture-in-picture;
-				web-share"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin"
-				allowfullscreen></iframe>
-			  ></iframe>
+				allowfullscreen>
+			  </iframe>
 			</div>
 		  </div>
 		  <h3>Video für Social Media</h3>
 		  <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
 		</div>
-		
+	  </div>
+
+	  <!-- Punkt-Navigation unterhalb des Carousels -->
+	  <div class="carousel-indicators">
+		<span class="dot active" data-index="0"></span>
+		<span class="dot" data-index="1"></span>
+		<span class="dot" data-index="2"></span>
+		<span class="dot" data-index="3"></span>
 	  </div>
 	</section>
+
 	
     <!-- Referenzen Abschnitt -->
     <section id="testimonials">
@@ -936,13 +986,6 @@
 			}
 		}
 
-		// Touch-Handling
-		function handleTouchStart(e) {
-			touchStartX = e.touches[0].clientX;
-			touchStartY = e.touches[0].clientY;
-			sliderContainer.style.transition = 'none';
-		}
-
 		function handleTouchMove(e) {
 			e.preventDefault();
 			if (isAnimating) return;
@@ -1031,13 +1074,6 @@
 				if(e.key === 'Escape') closeLightbox();
 			}
 		});
-		
-		// Close-Funktion vereinfachen
-		function closeLightbox() {
-			lightbox.classList.remove('active');
-			document.body.style.overflow = 'auto';
-		}
-
 
 		// Weitere Funktionen (Load More Button, Smooth Scroll, etc.)
 		loadMoreButton.addEventListener('click', () => {
@@ -1161,6 +1197,43 @@
       });
     });
   })();
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.services-container');
+    const dots = document.querySelectorAll('.carousel-indicators .dot');
+
+    /* Funktion: Setzt die .active-Klasse auf den aktuellen Punkt */
+    function updateActiveDot(index) {
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[index]) {
+        dots[index].classList.add('active');
+      }
+    }
+
+    /* Beim Scrollen: berechne aktuellen Slide-Index und aktualisiere Dots */
+    container.addEventListener('scroll', () => {
+      const slideIndex = Math.round(container.scrollLeft / container.clientWidth);
+      updateActiveDot(slideIndex);
+    });
+
+    /* Klick auf Punkt: scrollt zum jeweiligen Slide */
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'), 10);
+        container.scrollTo({
+          left: index * container.clientWidth,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    /* Beim Fenster-Resize: Position beibehalten und Dot-Sync */
+    window.addEventListener('resize', () => {
+      const currentIndex = Math.round(container.scrollLeft / container.clientWidth);
+      container.scrollTo({ left: currentIndex * container.clientWidth });
+      updateActiveDot(currentIndex);
+    });
+  });
 
 	</script>
 </body>
