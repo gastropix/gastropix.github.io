@@ -15,6 +15,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Externe CSS-Datei -->
 		<style>
+		/* Verhindert jegliche Textmarkierung auf der gesamten Seite */
+		* {
+		  -webkit-user-select: none;  /* Safari/Chrome */
+		  -moz-user-select: none;     /* Firefox */
+		  -ms-user-select: none;      /* IE/Edge */
+		  user-select: none;          /* Standard */
+		}
+		
 		/* ========== BASISSTILE ========== */
 		@font-face {
 			font-family: 'Zapfino';
@@ -212,11 +220,11 @@
 			border: none;
 			border-radius: 5px;
 			cursor: pointer;
-			transition: background-color 0.3s ease;
+			transition: 0.3s ease;
 		}
 
 		.load-more-btn:hover {
-			background-color: var(--secondary-color);
+			transform: scale(1.05);
 		}
 
 		/* ========== LIGHTBOX ========== */
@@ -399,11 +407,12 @@
   transition: filter 0.5s ease;
   border-radius: 12px;
   filter: brightness(0.8); /* leicht neutraler Look */
+  transition: filter 0.3s ease;
 }
 
 /* Hover: Bild wieder volle Helligkeit */
 .service-item:hover .service-icon img {
-  filter: grayscale(0%) brightness(1);
+  filter: brightness(1);
 }
 
 /* VIDEO-CONTAINER: schwarzer Hintergrund, Video mittig, Letterboxing */
@@ -626,36 +635,47 @@
 
 		/* ========== KONTAKT ========== */
 		#contact {
-			background-color: var(--dark-color);
-			color: white;
-			padding: 60px 20px;
-			border-radius: 10px;
-			margin-top: 80px;
+		  background-color: var(--dark-color);
+		  color: white;
+		  padding: 60px 20px;
+		  border-radius: 10px;
+		  margin-top: 80px;
+		  user-select: none; /* Verhindert Textauswahl im Kontakt-Bereich */
 		}
 
 		#contact h2 {
-			color: white;
+		  color: white;
+		  margin-bottom: 20px;
 		}
 
-		.contact-link {
-			color: var(--primary-color);
-			text-decoration: none;
-			font-weight: bold;
-			transition: color 0.3s ease;
+		/* Basis: Alle Links (Email, Telefon, Homepage, Instagram) */
+		#contact .contact-link {
+		  color: var(--primary-color);
+		  text-decoration: none;
+		  font-weight: bold;
+		  transition: color 0.3s ease;
+		  cursor: pointer;
 		}
 
-		.contact-link:hover {
-			color: var(--secondary-color);
+		/* Hover: Email- und Telefonnummer-Span werden sekundär (schwarz) */
+		#contact span.contact-link:hover {
+		  color: var(--secondary-color);
 		}
-		
+
+		/* Hover: Homepage-Link wird sekundär (schwarz) */
+		#contact a.contact-link:hover {
+		  color: var(--secondary-color);
+		}
+
+		/* Container für Instagram-Links */
 		.instagram-links {
 		  display: flex;
 		  justify-content: center;
 		  gap: 20px; /* Abstand zwischen den beiden Icons */
-		  margin-top: 20px; /* optional: Abstand nach oben */
+		  margin-top: 20px;
 		}
 
-		/* Jeder Link besteht aus Icon + Name, übereinander zentriert */
+		/* Einzelner Instagram-Link: Icon + Label übereinander */
 		.instagram {
 		  display: flex;
 		  flex-direction: column;
@@ -663,20 +683,34 @@
 		  text-decoration: none;
 		}
 
-		/* Größe des Instagram-Icons */
-		.contact-icon {
-		  width: 40px;     /* anpassen, falls du es kleiner/größer möchtest */
+		/* Basis-Transition für Instagram-Icon */
+		#contact .contact-link .contact-icon {
+		  width: 40px;
 		  height: auto;
 		  vertical-align: middle;
 		  margin: 0 8px;
+		  transition: filter 0.3s ease;
 		}
 
-		/* Beschriftung unter dem Icon */
-		.instagram-label {
+		/* Hover-Zustand: Instagram-Icon wird langsam schwarz */
+		#contact .contact-link:hover .contact-icon {
+		  filter: brightness(0);
+		}
+
+		/* Basis-Transition für Instagram-Label */
+		#contact .contact-link .instagram-label {
 		  margin-top: 8px;
 		  font-size: 0.9em;
-		  color: var(--primary-color); /* oder eine andere Wunschfarbe */
+		  color: var(--primary-color);
+		  transition: color 0.3s ease;
 		}
+
+		/* Hover-Zustand: Instagram-Label wird langsam schwarz */
+		#contact .contact-link:hover .instagram-label {
+		  color: #000;
+		}
+
+
 
 		/* ========== FOOTER ========== */
 		footer {
@@ -1095,28 +1129,23 @@
 
 		// Weitere Funktionen (Load More Button, Smooth Scroll, etc.)
 		loadMoreButton.addEventListener('click', () => {
-        const allImages = Array.from(document.querySelectorAll('.gallery img'));
-        
-        // Nächsten Block anzeigen
-        for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
-            if (allImages[i]) {
-                allImages[i].style.display = 'block';
-            }
-        }
+		const allImages = Array.from(document.querySelectorAll('.gallery img'));
+		const firstNewIndex = visibleImages;       // Index des ersten Bildes, das gleich sichtbar wird
+		const lastNewIndex  = visibleImages + IMAGES_PER_LOAD - 1;
 
-        visibleImages += IMAGES_PER_LOAD;
+		// 1) Nächsten Block anzeigen
+		for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
+			if (allImages[i]) {
+				allImages[i].style.display = 'block';
+			}
+		}
+		visibleImages += IMAGES_PER_LOAD;
 
-        // Button verstecken wenn alle Bilder sichtbar
-        if (visibleImages >= allImages.length) {
-            loadMoreButton.style.display = 'none';
-        }
-        
-        // Optional: Smooth Scroll zum neuen Block
-        allImages[visibleImages - 1]?.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'nearest' 
-        });
-    });
+		// 2) Button ausblenden, wenn alle Bilder vorhanden sind
+		if (visibleImages >= allImages.length) {
+			loadMoreButton.style.display = 'none';
+		}
+	});
 
 		function copyToClipboard(text) {
 			navigator.clipboard.writeText(text).then(() => {
