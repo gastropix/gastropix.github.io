@@ -352,13 +352,8 @@
 		  margin-bottom: 50px;
 		}
 
-		/* Container, in dem die Karten als Grid (Desktop) bzw. Slider (Mobil) dargestellt werden */
-		.services-slider-wrapper {
-		  position: relative;
-		}
-
-		.services-track {
-		  /* Desktop: Grid */
+		/* Container, in dem die Karten als Grid dargestellt werden */
+		.services-container {
 		  display: grid;
 		  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 		  gap: 40px;
@@ -366,52 +361,8 @@
 		  margin: 0 auto;
 		}
 
-		/* Pfeile (Desktop & Mobil) */
-		.service-arrow {
-		  position: absolute;
-		  top: 50%;
-		  transform: translateY(-50%);
-		  background: none;
-		  border: none;
-		  font-size: 2.5rem;
-		  color: var(--text-color);
-		  opacity: 0.6;
-		  cursor: pointer;
-		  padding: 0 10px;
-		  z-index: 2;
-		  transition: opacity 0.2s ease;
-		}
-		.service-arrow:hover {
-		  opacity: 1;
-		}
-		.service-arrow.prev {
-		  left: 0;
-		}
-		.service-arrow.next {
-		  right: 0;
-		}
-
-		/* Dots zur Anzeige des aktuellen Slides */
-		.services-dots {
-		  display: flex;
-		  justify-content: center;
-		  margin-top: 15px;
-		}
-		.services-dots .dot {
-		  width: 10px;
-		  height: 10px;
-		  background: #ccc;
-		  border-radius: 50%;
-		  margin: 0 5px;
-		  cursor: pointer;
-		  transition: background 0.2s ease;
-		}
-		.services-dots .dot.active {
-		  background: var(--primary-color);
-		}
-
-		/* Einzelne Service-Card */
-		.service-card {
+		/* Einzelne Service-Karte */
+		.service-item {
 		  background-color: white;
 		  border-radius: 12px;
 		  padding: 25px 20px;
@@ -423,50 +374,49 @@
 		  text-align: center;
 		}
 
-		/* Hover-Effekt für Desktop */
-		.service-card:hover {
+		/* Effekt: leichte Vergrößerung und Schatten beim Hover */
+		.service-item:hover {
 		  transform: translateY(-5px);
 		  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 		}
 
-		/* Bild-/Icon-Container */
-		.service-image,
-		.video-container {
+		/* Icon in der Karte */
+		.service-icon {
 		  width: 100%;
-		  overflow: hidden;
-		  border-radius: 12px;
+		  height: auto;
 		  margin-bottom: 20px;
+		  
 		}
 
-		.service-image img {
+		.service-icon img {
 		  width: 100%;
 		  height: 100%;
 		  object-fit: contain;
-		  filter: brightness(0.8);
+		  filter: brightness(0.8); /* leicht neutraler Look */
 		  transition: filter 0.5s ease;
 		  border-radius: 12px;
 		}
 
 		/* Icon beim Hover in voller Farbe */
-		.service-card:hover .service-image img {
+		.service-item:hover .service-icon img {
 		  filter: grayscale(0%) brightness(1);
 		}
 
 		/* Titel innerhalb der Karte */
-		.service-card h3 {
+		.service-item h3 {
 		  font-size: 1.8em;
 		  color: var(--secondary-color);
 		  margin: 0 0 15px;
 		}
 
 		/* Beschreibungstext */
-		.service-card p {
+		.service-item p {
 		  font-size: 1.1em;
 		  color: var(--text-color);
 		  line-height: 1.5;
 		  margin: 0;
 		}
-
+		
 		/* ===== YouTube-Video responsiv in der Service-Card ===== */
 		.video-container {
 		  position: relative;
@@ -474,9 +424,8 @@
 		  /* 16:9-Verhältnis: Höhe = 56.25% der Breite */
 		  padding-bottom: 56.25%;
 		  overflow: hidden;
-		  border-radius: 12px;
-		  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-		  margin-bottom: 20px;
+		  border-radius: 12px;               /* Gleiche Rundungen wie bei .service-icon img */
+		  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 		}
 
 		.video-container iframe {
@@ -487,10 +436,10 @@
 		  height: 100%;
 		}
 
-		/* Optional: leichtes „Heben“ beim Hover */
-		.service-card:hover .video-container {
+		/* Optional: leichtes „Heben“ beim Hover, analog zu den Bildern */
+		.service-item:hover .video-container {
 		  transform: translateY(-2px);
-		  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+		  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 		  transition: transform 0.3s ease, box-shadow 0.3s ease;
 		}
 
@@ -499,79 +448,21 @@
 		  .services-section {
 			padding: 60px 20px;
 		  }
-
-		  /* Mobil: Track als Scroll-Snap-Container */
-		  .services-track {
-			display: flex;
-			overflow-x: auto;
-			scroll-snap-type: x mandatory;
-			-webkit-overflow-scrolling: touch;
-			gap: 20px;
-			padding-bottom: 10px;
-			margin: 0;
-			scrollbar-width: none; /* Firefox */
-		  }
-		  .services-track::-webkit-scrollbar {
-			display: none; /* Chrome, Safari, Opera */
-		  }
-
-		  .service-card {
-			flex: 0 0 85vw;
-			max-width: 85vw;
-			scroll-snap-align: start;
-			background-color: white;
-			border-radius: 12px;
+		  .service-item {
 			padding: 20px 15px;
-			box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
 		  }
-
-		  .service-card:focus,
-		  .service-card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-		  }
-
-		  .service-image {
+		  .service-icon {
 			width: 60%;
-			height: auto;
+		    height: auto;
 			margin-bottom: 15px;
 		  }
-		  .service-image img {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-			filter: brightness(0.8);
-			transition: filter 0.5s ease;
-			border-radius: 12px;
+		  .service-item h3 {
+			font-size: 1.5em;
 		  }
-		  .service-card:hover .service-image img {
-			filter: grayscale(0%) brightness(1);
-		  }
-
-		  .service-card h3 {
-			font-size: 1.4em;
-			color: var(--secondary-color);
-			margin: 0 0 10px;
-		  }
-		  .service-card p {
+		  .service-item p {
 			font-size: 1em;
-			color: var(--text-color);
-			line-height: 1.5;
-			margin: 0;
-		  }
-
-		  /* Pfeile anpassen (kleiner) */
-		  .service-arrow {
-			font-size: 2rem;
-			padding: 5px 10px;
 		  }
 		}
-
 
 
 		/* ========== REFERENZEN ========== */
@@ -745,7 +636,7 @@
 				background: url('bilder/header2.jpg') center/cover no-repeat;
 				height: 100vh; /* z.B. 50% der Viewport-Höhe – nach Bedarf anpassen */
 				background-size: cover;
-				background-position: 75% center;
+				background-position: 85% center;
 				padding: 0;
 				
 			}
@@ -858,78 +749,62 @@
 	</section>
 
     <!-- Leistungen Abschnitt -->
-	<section id="services" class="services-section">
+    <section id="services" class="services-section">
 	  <h2>Leistungen</h2>
-
-	  <!-- Slider-Wrapper -->
-	  <div class="services-slider-wrapper">
-		<!-- Track mit allen Service-Cards -->
-		<div class="services-track">
-		  <!-- Hotelfotografie -->
-		  <div class="service-card">
-			<div class="service-image">
-			  <img src="bilder/gastro_50.jpg" alt="Hotelfotografie Icon" loading="lazy">
-			</div>
-			<div class="service-content">
-			  <h3>Hotelfotografie</h3>
-			  <p>Fesselnde Aufnahmen von Lobby, Zimmern &amp; Außenbereich – wir fangen die Atmosphäre Ihres Hauses authentisch ein, auch während des laufenden Betriebs.</p>
-			</div>
+	  <div class="services-container">
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<!-- Platzhalter-Icon, z.B. einfärbtes SVG oder PNG -->
+			<img src="bilder/gastro_50.jpg" alt="Hotelfotografie Icon" loading="lazy">
 		  </div>
-
-		  <!-- Flugaufnahmen -->
-		  <div class="service-card">
-			<div class="service-image">
-			  <img src="bilder/gastro_06.jpg" alt="Flugaufnahmen Icon" loading="lazy">
-			</div>
-			<div class="service-content">
-			  <h3>Flugaufnahmen</h3>
-			  <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
-			</div>
-		  </div>
-
-		  <!-- Food-Fotografie -->
-		  <div class="service-card">
-			<div class="service-image">
-			  <img src="bilder/gastro_30.jpg" alt="Food-Fotografie Icon" loading="lazy">
-			</div>
-			<div class="service-content">
-			  <h3>Food-Fotografie</h3>
-			  <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen: Vom Teller­arrangement bis zum stimmungs­vollen Ambiente des Restaurants.</p>
-			</div>
-		  </div>
-
-		  <!-- Video für Social Media -->
-		  <div class="service-card">
-			<div class="service-image">
-			  <div class="video-container">
-				<iframe
-				  width="560"
-				  height="315"
-				  src="https://www.youtube.com/embed/ZPsUzqXITGg?si=e0VXUXF1lUyr5uDW"
-				  title="YouTube video player"
-				  frameborder="0"
-				  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				  referrerpolicy="strict-origin-when-cross-origin"
-				  allowfullscreen>
-				</iframe>
-			  </div>
-			</div>
-			<div class="service-content">
-			  <h3>Video für Social Media</h3>
-			  <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
-			</div>
-		  </div>
+		  <h3>Hotelfotografie</h3>
+		  <p>Fesselnde Aufnahmen von Lobby, Zimmern &amp; Außenbereich – wir fangen die Atmosphäre Ihres Hauses authentisch ein, auch während des laufenden Betriebs.</p>
 		</div>
-
-		<!-- Pfeile zum Navigieren -->
-		<button class="service-arrow prev" aria-label="Vorherige Leistung">❮</button>
-		<button class="service-arrow next" aria-label="Nächste Leistung">❯</button>
-
-		<!-- Dots zur Anzeige des aktuellen Slides -->
-		<div class="services-dots"></div>
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<img src="bilder/gastro_06.jpg" alt="Flugaufnahmen Icon" loading="lazy">
+		  </div>
+		  <h3>Flugaufnahmen</h3>
+		  <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
+		</div>
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<img src="bilder/gastro_30.jpg" alt="Food-Fotografie Icon" loading="lazy">
+		  </div>
+		  <h3>Food-Fotografie</h3>
+		  <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen: Vom Teller­arrangement bis zum stimmungs­vollen Ambiente des Restaurants.</p>
+		</div>
+		
+		<div class="service-item">
+		  <div class="service-icon">
+			<div class="video-container">
+			  <iframe
+				<iframe width="560"
+				height="315"
+				src="https://www.youtube.com/embed/ZPsUzqXITGg?si=e0VXUXF1lUyr5uDW"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer;
+				autoplay;
+				clipboard-write;
+				encrypted-media;
+				gyroscope;
+				picture-in-picture;
+				web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen></iframe>
+			  ></iframe>
+			</div>
+		  </div>
+		  <h3>Video für Social Media</h3>
+		  <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
+		</div>
+		
 	  </div>
 	</section>
-
 	
     <!-- Referenzen Abschnitt -->
     <section id="testimonials">
