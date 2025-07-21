@@ -735,7 +735,6 @@
 				background-size: cover;
 				background-position: 65% center;
 				padding: 0;
-				
 			}
 
 			header h1 {
@@ -780,6 +779,18 @@
 
 			.testimonials-slider .slider-arrow {
 			    display: none;
+			}
+
+			.service-icon img {
+			    filter: none; /* keine Abdunkelung */
+			  }
+			
+			  .service-item:hover .service-icon img {
+			    filter: none; /* auch beim Hover keine Änderung */
+ 			  }
+			.service-item:hover {
+			    transform: none;
+			    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 			  }
 		}
 	</style>
