@@ -574,21 +574,22 @@
 		/* Slider-Grundgerüst */
 		.testimonials-slider {
 		  position: relative;
-		  overflow: hidden;
-		  padding: 0 50px; 
+		  overflow: hidden; 
 		  max-width: 800px;
 		  margin: 0 auto;
+		  padding 50;
 		}
 
 		.slider-track {
 		  display: flex;
 		  transition: transform 0.3s ease;
+		  z-index: 1000;
 		}
 
 		.testimonial-item {
 		  flex: 0 0 100%;
 		  box-sizing: border-box;
-		  padding: 20px;
+		  padding: 50px;
 		  border-left: 4px solid var(--primary-color);
 		  background-color: var(--background-color);
 		  text-align: left;
@@ -606,7 +607,7 @@
 		  opacity: 0.6;
 		  cursor: pointer;
 		  padding: 0 10px;
-		  z-index: 2;
+		  z-index: 1000;
 		  transition: opacity 0.2s ease;
 		}
 		.slider-arrow:hover { opacity: 1; }
