@@ -3,47 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenschutz – Klaus Mitterhauser</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Datenschutz – Klaus Mitterhauser &amp; Sebastian Pillinger</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #B8874F;
+            --secondary-color: #0B2E30;
+            --background-color: #FAF9F6;
+            --text-color: #262422;
+        }
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #E8E7E3;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.65;
+        }
+        .page-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
         }
         h1 {
-            font-size: 2em;
-            color: #CF8852;
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 2.4em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
         }
-        p {
-            font-size: 1em;
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            margin-top: 46px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(11, 46, 48, 0.15);
+            padding-bottom: 8px;
         }
-        a {
-            color: #CF8852;
-            text-decoration: none;
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.05em;
+            margin: 20px 0 6px;
         }
-        a:hover {
-            text-decoration: underline;
+        p, li { font-size: 1em; margin: 0 0 10px; }
+        ul { padding-left: 20px; margin: 0 0 10px; }
+        a { color: var(--primary-color); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .info-box {
+            background: white;
+            border: 1px solid rgba(11, 46, 48, 0.12);
+            border-radius: 3px;
+            padding: 18px 22px;
+            margin: 14px 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <h1>Datenschutzerklärung</h1>
-    <p><strong>1. Datenschutz auf einen Blick</strong></p>
-    <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie darüber, wie wir Ihre Daten erfassen, verwenden und schützen.</p>
-    <p><strong>2. Erfassung und Verwendung Ihrer Daten</strong></p>
-    <p>Wir erfassen keine personenbezogenen Daten, es sei denn, Sie geben sie uns freiwillig an (z. B. per E-Mail oder Kontaktformular). Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.</p>
-    <p><strong>3. Cookies</strong></p>
-    <p>Diese Website verwendet keine Cookies.</p>
-    <p><strong>4. Kontakt</strong></p>
-    <p>Klaus Mitterhauser</p>
-    <p>Pyhrnstraße 5</p>
-    <p>4563 Micheldorf, Oberösterreich</p>
-    <p>Email: <a href="foto@klaus-mitterhauser.at">foto@klaus-mitterhauser.at</a></p>
-    <p><a href="index.html#contact">Zurück zur Startseite</a></p>
+    <div class="page-wrap">
+        <h1>Datenschutzerklärung</h1>
+        <p>Wir freuen uns über Ihr Interesse an unserer Website. Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Nachfolgend informieren wir Sie ausführlich über den Umgang mit Ihren Daten gemäß der EU-Datenschutz-Grundverordnung (DSGVO).</p>
+
+        <h2>1. Verantwortliche</h2>
+        <p>Verantwortlich für die Datenverarbeitung auf dieser Website sind gemeinsam:</p>
+        <div class="info-box">
+            <p><strong>Klaus Mitterhauser</strong><br>
+            Pyhrnstraße 5, 4563 Micheldorf, Oberösterreich<br>
+            Email: <a href="mailto:foto@klaus-mitterhauser.at">foto@klaus-mitterhauser.at</a></p>
+        </div>
+        <div class="info-box">
+            <p><strong>Sebastian Pillinger</strong><br>
+            Email: <a href="mailto:sebastian.pillinger@gmx.at">sebastian.pillinger@gmx.at</a><br>
+            Telefon: <a href="tel:+4367762026186">+43 677 62026186</a></p>
+        </div>
+
+        <h2>2. Erfassung und Speicherung personenbezogener Daten</h2>
+        <h3>a) Beim Besuch der Website</h3>
+        <p>Beim Aufrufen unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, verwendeter Browser). Diese Daten werden vorübergehend in einem sogenannten Logfile gespeichert und dienen ausschließlich der Sicherstellung eines störungsfreien Betriebs sowie der IT-Sicherheit.</p>
+
+        <h3>b) Kontaktformular</h3>
+        <p>Wenn Sie uns über unser Kontaktformular eine Anfrage senden, werden die von Ihnen eingegebenen Daten (Name, Hotel/Betrieb, E-Mail-Adresse, gewünschter Zeitraum, Nachricht) zum Zweck der Bearbeitung Ihrer Anfrage und für den Fall sich anschließender Fragen bei uns gespeichert.</p>
+        <p>Für die technische Übermittlung des Formulars nutzen wir den Dienst <strong>FormSubmit</strong>. Die von Ihnen eingegebenen Daten werden dabei an die Server dieses Anbieters übermittelt und per E-Mail an uns weitergeleitet. Ein Auftragsverarbeitungsverhältnis besteht in diesem Rahmen mit diesem Dienstleister. Weitere Informationen finden Sie in der Datenschutzerklärung von FormSubmit unter <a href="https://formsubmit.co/privacy" target="_blank">formsubmit.co/privacy</a>.</p>
+
+        <h3>c) Direktkontakt per E-Mail oder Telefon</h3>
+        <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet.</p>
+
+        <h2>3. Rechtsgrundlage der Verarbeitung</h2>
+        <p>Die Verarbeitung Ihrer Daten im Rahmen von Anfragen erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen bzw. Vertragserfüllung) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen und am störungsfreien Betrieb unserer Website).</p>
+
+        <h2>4. Eingebundene Schriftarten (Google Fonts)</h2>
+        <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Google Fonts. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriften von den Servern von Google (Google Ireland Limited). Dabei wird Ihre IP-Adresse an Google übermittelt. Weitere Informationen finden Sie in der Datenschutzerklärung von Google unter <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
+
+        <h2>5. Cookies</h2>
+        <p>Diese Website setzt keine eigenen Cookies zu Tracking- oder Analysezwecken ein.</p>
+
+        <h2>6. Speicherdauer</h2>
+        <p>Wir speichern personenbezogene Daten nur so lange, wie dies für die Erfüllung des jeweiligen Zwecks erforderlich ist, oder solange gesetzliche Aufbewahrungsfristen (z. B. steuerrechtliche Vorgaben für Rechnungen) dies vorschreiben.</p>
+
+        <h2>7. Ihre Rechte als betroffene Person</h2>
+        <p>Ihnen stehen grundsätzlich folgende Rechte zu:</p>
+        <ul>
+            <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+            <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+            <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+            <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+        </ul>
+        <p>Zur Ausübung dieser Rechte können Sie sich jederzeit an die oben genannten Kontaktadressen wenden.</p>
+
+        <h2>8. Beschwerderecht bei der Aufsichtsbehörde</h2>
+        <p>Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Zuständig ist die österreichische Datenschutzbehörde:</p>
+        <div class="info-box">
+            <p>Österreichische Datenschutzbehörde<br>
+            Barichgasse 40–42, 1030 Wien<br>
+            <a href="https://www.dsb.gv.at" target="_blank">www.dsb.gv.at</a></p>
+        </div>
+
+        <a href="index.html#contact" class="back-link">← Zurück zur Startseite</a>
+    </div>
 </body>
 </html>
