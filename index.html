@@ -26,13 +26,18 @@
 
     <!-- Hauptnavigation -->
     <nav aria-label="Hauptnavigation">
-		<a href="#about">Über uns</a>
-		<a href="#portfolio">Portfolio</a>
-        <a href="#services">Leistungen</a>
-        <a href="#process">Ablauf</a>
-        <a href="#faq">FAQ</a>
-        <a href="#testimonials">Referenzen</a>
-        <a href="#contact">Kontakt</a>
+		<button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+			<span></span><span></span><span></span>
+		</button>
+		<div class="nav-links" id="navLinks">
+			<a href="#about">Über uns</a>
+			<a href="#portfolio">Portfolio</a>
+	        <a href="#services">Leistungen</a>
+	        <a href="#process">Ablauf</a>
+	        <a href="#faq">FAQ</a>
+	        <a href="#testimonials">Referenzen</a>
+	        <a href="#contact">Kontakt</a>
+		</div>
     </nav>
     <!-- Header mit Titel -->
     <header>
@@ -497,7 +502,17 @@
 				e.preventDefault();
 				const target = document.getElementById(this.getAttribute('href').substring(1));
 				if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				navLinks.classList.remove('open');
+				navToggle.setAttribute('aria-expanded', 'false');
 			});
+		});
+
+		// Burgermenü (nur mobil sichtbar)
+		const navToggle = document.getElementById('navToggle');
+		const navLinks = document.getElementById('navLinks');
+		navToggle.addEventListener('click', () => {
+			const isOpen = navLinks.classList.toggle('open');
+			navToggle.setAttribute('aria-expanded', isOpen);
 		});
 		(function() {
 		  const track      = document.querySelector('.slider-track');
