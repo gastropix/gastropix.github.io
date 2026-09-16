@@ -189,11 +189,9 @@
 
 		@media (max-width: 768px) {
 			header .cta-button {
-				right: 50%;
-				transform: translateX(50%);
+				right: 24px;
 				bottom: 50px;
-				font-size: 0.95em;
-				padding: 14px 26px;
+				white-space: nowrap;
 			}
 			.contact-form-section {
 				padding: 40px 20px;
@@ -1012,9 +1010,14 @@
 				margin: 0 10px;
 			}
 
+			nav {
+				text-align: right;
+			}
+
 			/* Burgermenü nur mobil aktiv */
 			.nav-toggle {
-				display: flex;
+				display: inline-flex;
+				margin: 0 20px;
 			}
 
 			.nav-links {
