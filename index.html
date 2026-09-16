@@ -36,6 +36,7 @@
     <!-- Header mit Titel -->
     <header>
         <h1>Hotel,<br> Tourismus<br> und Kulinarik</h1>
+        <a href="#contact-form" class="cta-button">Jetzt Anfrage stellen</a>
     </header>
 	
 	<!-- Über uns Abschnitt -->
@@ -159,7 +160,7 @@
 			<div class="process-item">
 				<div class="process-number">2</div>
 				<h3>Das Shooting</h3>
-				<p>An 2 Tagen fotografieren wir im laufenden Betrieb: Hotel-Außenaufnahmen und Flugaufnahmen, Innenarchitektur, Empfang und Lobby, alle Zimmerkategorien, Frühstücksbuffet, Mittag- und Abendessen, Restaurant sowie Speisen und Cocktails – auf Wunsch auch mit Ihren Mitarbeitern und deren Familien für authentische, kostengünstige Bildmotive. Optional auch für Sommer und Winter, für eine ganzjährig stimmige Bildsprache.</p>
+				<p>An 2 Tagen fotografieren wir im laufenden Betrieb: Hotel-Außenaufnahmen und Flugaufnahmen, Innenarchitektur, Empfang und Lobby, alle Zimmerkategorien, Frühstücksbuffet, Mittag- und Abendessen, Restaurant sowie Speisen und Cocktails – auf Wunsch auch mit Ihren Mitarbeiter:innen und deren Familien für authentische, kostengünstige Bildmotive. Optional auch für Sommer und Winter, für eine ganzjährig stimmige Bildsprache.</p>
 			</div>
 
 			<!-- 3. Bearbeitung & Lieferung -->
@@ -170,6 +171,10 @@
 			</div>
 		</div>
 	</section>
+
+	<div class="cta-inline-wrap">
+		<a href="#contact-form" class="cta-button">Jetzt unverbindlich anfragen</a>
+	</div>
 
     <!-- Referenzen Abschnitt -->
     <section id="testimonials">
@@ -195,6 +200,41 @@
 		<div class="slider-dots"></div>
 	  </div>
 	</section>
+
+    <!-- Kontaktformular Abschnitt -->
+    <section id="contact-form" class="contact-form-section">
+        <h2>Jetzt Anfrage stellen</h2>
+        <p class="contact-form-intro">Erzählen Sie uns kurz von Ihrem Haus – wir melden uns zeitnah mit einem passenden Vorschlag.</p>
+        <form class="contact-form" action="https://formsubmit.co/foto@klaus-mitterhauser.at" method="POST">
+            <input type="hidden" name="_subject" value="Neue Anfrage über die Website">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="cf-name">Name</label>
+                    <input type="text" id="cf-name" name="Name" required>
+                </div>
+                <div class="form-field">
+                    <label for="cf-hotel">Hotel / Betrieb</label>
+                    <input type="text" id="cf-hotel" name="Hotel" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="cf-email">E-Mail</label>
+                    <input type="email" id="cf-email" name="E-Mail" required>
+                </div>
+                <div class="form-field">
+                    <label for="cf-zeitraum">Gewünschter Zeitraum</label>
+                    <input type="text" id="cf-zeitraum" name="Gewünschter Zeitraum" placeholder="z. B. Frühjahr 2027">
+                </div>
+            </div>
+            <div class="form-field form-field-full">
+                <label for="cf-nachricht">Nachricht</label>
+                <textarea id="cf-nachricht" name="Nachricht" rows="5" placeholder="Erzählen Sie uns kurz von Ihrem Hotel und Ihren Wünschen"></textarea>
+            </div>
+            <button type="submit" class="cta-button">Anfrage absenden</button>
+        </form>
+    </section>
 
     <!-- Kontakt Abschnitt -->
     <section id="contact">
