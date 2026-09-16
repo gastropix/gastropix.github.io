@@ -210,6 +210,12 @@
 			z-index: 2;
 		}
 
+		.nav-links {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
 		nav a {
 			margin: 0 20px;
 			color: white;
@@ -223,6 +229,37 @@
 
 		nav a:hover {
 			color: var(--primary-color);
+		}
+
+		/* Burger-Button: standardmäßig unsichtbar (nur mobil aktiv) */
+		.nav-toggle {
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			gap: 5px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 10px 16px;
+			margin: 0 auto;
+		}
+
+		.nav-toggle span {
+			display: block;
+			width: 26px;
+			height: 2px;
+			background-color: white;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+		}
+
+		.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+			transform: translateY(7px) rotate(45deg);
+		}
+		.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+			opacity: 0;
+		}
+		.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+			transform: translateY(-7px) rotate(-45deg);
 		}
 
 		/* ========== SEKTIONSSTILE ========== */
@@ -954,6 +991,28 @@
 			nav a {
 				font-size: 1.2em;
 				margin: 0 10px;
+			}
+
+			/* Burgermenü nur mobil aktiv */
+			.nav-toggle {
+				display: flex;
+			}
+
+			.nav-links {
+				display: none;
+				flex-direction: column;
+				width: 100%;
+				background: rgba(11, 46, 48, 0.97);
+				padding: 10px 0;
+			}
+
+			.nav-links.open {
+				display: flex;
+			}
+
+			.nav-links a {
+				padding: 12px 0;
+				margin: 0;
 			}
 
 			.about-person {
