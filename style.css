@@ -107,12 +107,10 @@
 		}
 
 		header .cta-button {
-			right: 20px;
-			bottom: 40px;
-			transform: none;
-			white-space: nowrap;
-			font-size: 0.9em;
-			padding: 12px 20px;
+			position: absolute;
+			right: 70px;
+			bottom: 80px;
+			z-index: 1;
 		}
 
 		.cta-inline-wrap {
@@ -243,8 +241,7 @@
 			border: none;
 			cursor: pointer;
 			padding: 10px 16px;
-			margin-left: auto;
-			margin-right: 0;
+			margin: 0 auto;
 		}
 
 		.nav-toggle span {
