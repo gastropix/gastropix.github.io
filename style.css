@@ -393,39 +393,30 @@
 		
 		.gallery {
 		    display: flex;
-		    flex-wrap: wrap;
-		    gap: 12px; /* Gleichmäßiger Abstand horizontal & vertikal */
+		    align-items: flex-start;
+		    gap: 12px;
 		    width: 100%;
-		    background-color: #FFFFFF;
 		}
 		
-		/* 3 Spalten auf Desktop */
-		.gallery img {
-		    width: calc(33.333% - 8px);
+		.gallery-col {
+		    flex: 1 1 0;
+		    min-width: 0;
+		    display: flex;
+		    flex-direction: column;
+		    gap: 12px;
+		}
+		
+		.gallery-col img {
+		    width: 100%;
 		    height: auto;
-		    object-fit: cover;
 		    display: block;
-		    border-radius: 0;
+		    background: #EEECE7;      /* Platzhalterfarbe, bis das Bild geladen ist */
 		    cursor: pointer;
-		    transition: filter 0.2s ease, transform 0.2s ease;
+		    transition: filter 0.2s ease;
 		}
 		
-		.gallery img:hover {
+		.gallery-col img:hover {
 		    filter: brightness(1.05);
-		}
-		
-		/* 2 Spalten auf Tablet */
-		@media (max-width: 900px) {
-		    .gallery img {
-		        width: calc(50% - 6px);
-		    }
-		}
-		
-		/* 1 Spalte auf Handy */
-		@media (max-width: 600px) {
-		    .gallery img {
-		        width: 100%;
-		    }
 		}
 		
 		.load-more-btn {
