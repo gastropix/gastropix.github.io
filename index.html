@@ -433,7 +433,7 @@
 	    const gallery = document.getElementById('gallery');
 	    const loadMoreButton = document.getElementById('loadMore');
 	
-	    // 1. Galerie ERST aus dem Array aufbauen
+	    // 1. Galerie aus dem Array aufbauen
 	    galleryItems.forEach((item, index) => {
 	        const img = document.createElement('img');
 	        img.src = item.src;
@@ -448,7 +448,7 @@
 	        gallery.appendChild(img);
 	    });
 	
-	    // 2. DANACH Masonry initialisieren
+	    // 2. Masonry initialisieren, sobald Bilder geladen sind
 	    let msnry;
 	    imagesLoaded(gallery, function() {
 	        msnry = new Masonry(gallery, {
@@ -456,6 +456,27 @@
 	            percentPosition: true,
 	            gutter: 12
 	        });
+	    });
+	
+	    // 3. "Weitere Bilder anzeigen" mit Masonry-Aktualisierung
+	    loadMoreButton.addEventListener('click', () => {
+	        const allImages = Array.from(document.querySelectorAll('.gallery img'));
+	        
+	        for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
+	            if (allImages[i]) {
+	                allImages[i].style.display = 'block';
+	            }
+	        }
+	        visibleImages += IMAGES_PER_LOAD;
+	
+	        // Layout für Masonry neu berechnen, damit die neuen Bilder perfekt einrasten
+	        if (msnry) {
+	            msnry.layout();
+	        }
+	
+	        if (visibleImages >= allImages.length) {
+	            loadMoreButton.style.display = 'none';
+	        }
 	    });
 	
 	    function preloadNeighbors(index) {
