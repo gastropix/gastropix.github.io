@@ -364,95 +364,106 @@
     </footer>
     <!-- Externe JavaScript-Datei -->
 	
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+	
 	<script>
-		// Initialisiere Lightbox-Elemente
-		const lightbox = document.getElementById('lightbox');
-		const sliderContainer = document.getElementById('slider-container');
-		
-		const IMAGES_PER_LOAD = 9;
-		let visibleImages = 100; // Anfangs sichtbare Bilder
-		
-		// Manuelle Bilderrangfolge mit SEO-Alt-Texten
-        const galleryItems = [
-            { src: 'bilder/gastro_01.jpg', alt: 'Helles Hotelzimmer mit Doppelbett und modernem Badezimmer' },
-			{ src: 'bilder/gastro_02.jpg', alt: 'Knuspriges Wiener Schnitzel mit Beilage auf Teller serviert' },
-			{ src: 'bilder/gastro_03.jpg', alt: 'Gemütliches Hotel-Schlafzimmer mit Balkonaussicht' },
-			{ src: 'bilder/gastro_04.jpg', alt: 'Zwei Weingläser auf Balkontisch mit Blick auf den See' },
-			{ src: 'bilder/gastro_05.jpg', alt: 'Steg mit T-förmiger Holzplattform am türkisblauen See' },
-			{ src: 'bilder/gastro_06.jpg', alt: 'Luftaufnahme einer Hotelanlage direkt am Seeufer mit Segelboot' },
-			{ src: 'bilder/gastro_07.jpg', alt: 'Familie beim gemeinsamen Essen auf einer sonnigen Terrasse' },
-			{ src: 'bilder/gastro_08.jpg', alt: 'Frischer bunter Salat tellerfertig serviert am See' },
-			{ src: 'bilder/gastro_09.jpg', alt: 'Kellner serviert Getränke für Gäste am Außentisch am See' },
-			{ src: 'bilder/gastro_10.jpg', alt: 'Zwei Frauen im weißen Bademantel entspannen im Wellnessbereich' },
-			{ src: 'bilder/gastro_11.jpg', alt: 'Frau im Wellnessbereich mit Holzverkleidung und warmem Licht' },
-			{ src: 'bilder/gastro_12.jpg', alt: 'Entspannung auf Liegestühlen im Ruheraum des Spa-Bereichs' },
-			{ src: 'bilder/gastro_13.jpg', alt: 'Frisch gezapftes Bier auf Holzbrett im Sonnenschein' },
-			{ src: 'bilder/gastro_14.jpg', alt: 'Köstliches Dessert mit frischen Erdbeeren und Eis' },
-			{ src: 'bilder/gastro_15.jpg', alt: 'Schokoladenkuchen mit Kirsche garniert auf weißem Teller' },
-			{ src: 'bilder/gastro_16.jpg', alt: 'Kinder sitzen fröhlich auf einer Holzbank im Freien' },
-			{ src: 'bilder/gastro_17.jpg', alt: 'Gruppe stößt mit bunten Drinks im Garten an' },
-			{ src: 'bilder/gastro_18.jpg', alt: 'Gäste genießen Service im gemütlichen Gastgarten' },
-			{ src: 'bilder/gastro_19.jpg', alt: 'Süße Nachspeise ansprechende Anrichtung im Restaurant' },
-			{ src: 'bilder/gastro_20.jpg', alt: 'Panoramaaussicht auf eine malerische Bucht und Landschaft' },
-			{ src: 'bilder/gastro_21.jpg', alt: 'Feines Dessert auf Teller mit Blick auf den See im Hintergrund' },
-			{ src: 'bilder/gastro_22.jpg', alt: 'Stand-Up-Paddling auf ruhigem See bei Abendstimmung' },
-			{ src: 'bilder/gastro_23.jpg', alt: 'Historisches Gebäude am Ufer mit Bergkulisse' },
-			{ src: 'bilder/gastro_24.jpg', alt: 'Gruppe entspannt auf einem Holzsteg am Wasser' },
-			{ src: 'bilder/gastro_25.jpg', alt: 'Spiegelei und frische Zutaten auf Holzbrett für das Frühstück' },
-			{ src: 'bilder/gastro_26.jpg', alt: 'Dessert-Spezialität hübsch angerichtet auf schwarzem Teller' },
-			{ src: 'bilder/gastro_27.jpg', alt: 'Cremiger Cappuccino mit Milchschaum-Herz im Café' },
-			{ src: 'bilder/gastro_28.jpg', alt: 'Saftiges Steak auf Holzbrett mit Kräutern serviert' },
-			{ src: 'bilder/gastro_29.jpg', alt: 'Vier edle Weißweinflaschen nebeneinander auf weißem Grund' },
-			{ src: 'bilder/gastro_30.jpg', alt: 'T-Bone Steak frisch zubereitet in einer Gusseisenpfanne' },
-			{ src: 'bilder/gastro_31.jpg', alt: 'Paar beim romantischen Essen am liebevoll gedeckten Tisch' },
-			{ src: 'bilder/gastro_32.jpg', alt: 'Moderner Gastraum eines Restaurants mit Blick nach draußen' },
-			{ src: 'bilder/gastro_33.jpg', alt: 'Hand hält erfrischendes Mixgetränk vor Bergpanorama' },
-			{ src: 'bilder/gastro_34.jpg', alt: 'Gäste im Empfangsbereich eines Hotels oder Restaurants' },
-			{ src: 'bilder/gastro_35.jpg', alt: 'Moderner Konferenz- und Tagungsraum mit Bestuhlung' },
-			{ src: 'bilder/gastro_36.jpg', alt: 'Köche bei der Arbeit in einer professionellen Großküche' },
-			{ src: 'bilder/gastro_37.jpg', alt: 'Frisches Buffet mit vielfältiger Auswahl im Restaurant' },
-			{ src: 'bilder/gastro_38.jpg', alt: 'Freundliche Köche präsentieren frisch gebackenes Brot' },
-			{ src: 'bilder/gastro_39.jpg', alt: 'Gemütlicher Stammtisch im Restaurant mit Gästen' },
-			{ src: 'bilder/gastro_40.jpg', alt: 'Gäste entspannen auf Sonnenliegen direkt am Wasser' },
-			{ src: 'bilder/gastro_41.jpg', alt: 'Sonnige Seelandschaft mit blauem Himmel und Bergen' },
-			{ src: 'bilder/gastro_42.jpg', alt: 'Zwei Kinder sitzen fröhlich am Tisch im Außenbereich' },
-			{ src: 'bilder/gastro_43.jpg', alt: 'Bedienung reicht Gästen Getränke am gedeckten Tisch' },
-			{ src: 'bilder/gastro_44.jpg', alt: 'Gourmet-Gericht aufwendig garniert auf rote Dekoration' },
-			{ src: 'bilder/gastro_45.jpg', alt: 'Kellner berät Gäste aufmerksam am Restauranttisch' },
-			{ src: 'bilder/gastro_46.jpg', alt: 'Herzhaftes Fleischgericht mit Soße und Kräutern' },
-			{ src: 'bilder/gastro_47.jpg', alt: 'Feines Stück Kuchen mit Erdbeere auf gemustertem Teller' },
-			{ src: 'bilder/gastro_48.jpg', alt: 'Pfannengericht mit frischen Kräutern serviert' },
-			{ src: 'bilder/gastro_49.jpg', alt: 'Heller, geräumiger Speisesaal bereit für Gäste' },
-			{ src: 'bilder/gastro_50.jpg', alt: 'Paar im Bademantel geht durch den modernen Spa-Flur' },
-			{ src: 'bilder/gastro_51.jpg', alt: 'Paar genießt Getränke auf der Terrasse mit Bergkulisse' }
-            // Trage hier Zeile für Zeile alle deine Bilder ein...
-        ];
-        
-        const gallery = document.getElementById('gallery');
-        const loadMoreButton = document.getElementById('loadMore');
-
-        // Galerie dynamisch aus dem Array aufbauen
-        galleryItems.forEach((item, index) => {
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.alt;
-            img.loading = 'lazy';
-            
-            // Anfangs nur die ersten 'visibleImages' anzeigen (für den "Load More"-Button)
-            if (index >= visibleImages) {
-                img.style.display = 'none';
-            }
-
-            img.onclick = () => openLightbox(index);
-            gallery.appendChild(img);
-        });
-		
-		function preloadNeighbors(index) {
-			const prevIndex = (index - 1 + images.length) % images.length;
-			const nextIndex = (index + 1) % images.length;
-			new Image().src = images[prevIndex]; // Browser cached diese automatisch
-			new Image().src = images[nextIndex];
-		}
+	    // Initialisiere Lightbox-Elemente
+	    const lightbox = document.getElementById('lightbox');
+	    const sliderContainer = document.getElementById('slider-container');
+	    
+	    const IMAGES_PER_LOAD = 9;
+	    let visibleImages = 12; // Anfangs sichtbare Bilder
+	    
+	    // Manuelle Bilderrangfolge mit SEO-Alt-Texten
+	    const galleryItems = [
+	        { src: 'bilder/gastro_01.jpg', alt: 'Helles Hotelzimmer mit Doppelbett und modernem Badezimmer' },
+	        { src: 'bilder/gastro_02.jpg', alt: 'Knuspriges Wiener Schnitzel mit Beilage auf Teller serviert' },
+	        { src: 'bilder/gastro_03.jpg', alt: 'Gemütliches Hotel-Schlafzimmer mit Balkonaussicht' },
+	        { src: 'bilder/gastro_04.jpg', alt: 'Zwei Weingläser auf Balkontisch mit Blick auf den See' },
+	        { src: 'bilder/gastro_05.jpg', alt: 'Steg mit T-förmiger Holzplattform am türkisblauen See' },
+	        { src: 'bilder/gastro_06.jpg', alt: 'Luftaufnahme einer Hotelanlage direkt am Seeufer mit Segelboot' },
+	        { src: 'bilder/gastro_07.jpg', alt: 'Familie beim gemeinsamen Essen auf einer sonnigen Terrasse' },
+	        { src: 'bilder/gastro_08.jpg', alt: 'Frischer bunter Salat tellerfertig serviert am See' },
+	        { src: 'bilder/gastro_09.jpg', alt: 'Kellner serviert Getränke für Gäste am Außentisch am See' },
+	        { src: 'bilder/gastro_10.jpg', alt: 'Zwei Frauen im weißen Bademantel entspannen im Wellnessbereich' },
+	        { src: 'bilder/gastro_11.jpg', alt: 'Frau im Wellnessbereich mit Holzverkleidung und warmem Licht' },
+	        { src: 'bilder/gastro_12.jpg', alt: 'Entspannung auf Liegestühlen im Ruheraum des Spa-Bereichs' },
+	        { src: 'bilder/gastro_13.jpg', alt: 'Frisch gezapftes Bier auf Holzbrett im Sonnenschein' },
+	        { src: 'bilder/gastro_14.jpg', alt: 'Köstliches Dessert mit frischen Erdbeeren und Eis' },
+	        { src: 'bilder/gastro_15.jpg', alt: 'Schokoladenkuchen mit Kirsche garniert auf weißem Teller' },
+	        { src: 'bilder/gastro_16.jpg', alt: 'Kinder sitzen fröhlich auf einer Holzbank im Freien' },
+	        { src: 'bilder/gastro_17.jpg', alt: 'Gruppe stößt mit bunten Drinks im Garten an' },
+	        { src: 'bilder/gastro_18.jpg', alt: 'Gäste genießen Service im gemütlichen Gastgarten' },
+	        { src: 'bilder/gastro_19.jpg', alt: 'Süße Nachspeise ansprechende Anrichtung im Restaurant' },
+	        { src: 'bilder/gastro_20.jpg', alt: 'Panoramaaussicht auf eine malerische Bucht und Landschaft' },
+	        { src: 'bilder/gastro_21.jpg', alt: 'Feines Dessert auf Teller mit Blick auf den See im Hintergrund' },
+	        { src: 'bilder/gastro_22.jpg', alt: 'Stand-Up-Paddling auf ruhigem See bei Abendstimmung' },
+	        { src: 'bilder/gastro_23.jpg', alt: 'Historisches Gebäude am Ufer mit Bergkulisse' },
+	        { src: 'bilder/gastro_24.jpg', alt: 'Gruppe entspannt auf einem Holzsteg am Wasser' },
+	        { src: 'bilder/gastro_25.jpg', alt: 'Spiegelei und frische Zutaten auf Holzbrett für das Frühstück' },
+	        { src: 'bilder/gastro_26.jpg', alt: 'Dessert-Spezialität hübsch angerichtet auf schwarzem Teller' },
+	        { src: 'bilder/gastro_27.jpg', alt: 'Cremiger Cappuccino mit Milchschaum-Herz im Café' },
+	        { src: 'bilder/gastro_28.jpg', alt: 'Saftiges Steak auf Holzbrett mit Kräutern serviert' },
+	        { src: 'bilder/gastro_29.jpg', alt: 'Vier edle Weißweinflaschen nebeneinander auf weißem Grund' },
+	        { src: 'bilder/gastro_30.jpg', alt: 'T-Bone Steak frisch zubereitet in einer Gusseisenpfanne' },
+	        { src: 'bilder/gastro_31.jpg', alt: 'Paar beim romantischen Essen am liebevoll gedeckten Tisch' },
+	        { src: 'bilder/gastro_32.jpg', alt: 'Moderner Gastraum eines Restaurants mit Blick nach draußen' },
+	        { src: 'bilder/gastro_33.jpg', alt: 'Hand hält erfrischendes Mixgetränk vor Bergpanorama' },
+	        { src: 'bilder/gastro_34.jpg', alt: 'Gäste im Empfangsbereich eines Hotels oder Restaurants' },
+	        { src: 'bilder/gastro_35.jpg', alt: 'Moderner Konferenz- und Tagungsraum mit Bestuhlung' },
+	        { src: 'bilder/gastro_36.jpg', alt: 'Köche bei der Arbeit in einer professionellen Großküche' },
+	        { src: 'bilder/gastro_37.jpg', alt: 'Frisches Buffet mit vielfältiger Auswahl im Restaurant' },
+	        { src: 'bilder/gastro_38.jpg', alt: 'Freundliche Köche präsentieren frisch gebackenes Brot' },
+	        { src: 'bilder/gastro_39.jpg', alt: 'Gemütlicher Stammtisch im Restaurant mit Gästen' },
+	        { src: 'bilder/gastro_40.jpg', alt: 'Gäste entspannen auf Sonnenliegen direkt am Wasser' },
+	        { src: 'bilder/gastro_41.jpg', alt: 'Sonnige Seelandschaft mit blauem Himmel und Bergen' },
+	        { src: 'bilder/gastro_42.jpg', alt: 'Zwei Kinder sitzen fröhlich am Tisch im Außenbereich' },
+	        { src: 'bilder/gastro_43.jpg', alt: 'Bedienung reicht Gästen Getränke am gedeckten Tisch' },
+	        { src: 'bilder/gastro_44.jpg', alt: 'Gourmet-Gericht aufwendig garniert auf rote Dekoration' },
+	        { src: 'bilder/gastro_45.jpg', alt: 'Kellner berät Gäste aufmerksam am Restauranttisch' },
+	        { src: 'bilder/gastro_46.jpg', alt: 'Herzhaftes Fleischgericht mit Soße und Kräutern' },
+	        { src: 'bilder/gastro_47.jpg', alt: 'Feines Stück Kuchen mit Erdbeere auf gemustertem Teller' },
+	        { src: 'bilder/gastro_48.jpg', alt: 'Pfannengericht mit frischen Kräutern serviert' },
+	        { src: 'bilder/gastro_49.jpg', alt: 'Heller, geräumiger Speisesaal bereit für Gäste' },
+	        { src: 'bilder/gastro_50.jpg', alt: 'Paar im Bademantel geht durch den modernen Spa-Flur' },
+	        { src: 'bilder/gastro_51.jpg', alt: 'Paar genießt Getränke auf der Terrasse mit Bergkulisse' }
+	    ];
+	
+	    const gallery = document.getElementById('gallery');
+	    const loadMoreButton = document.getElementById('loadMore');
+	
+	    // 1. Galerie ERST aus dem Array aufbauen
+	    galleryItems.forEach((item, index) => {
+	        const img = document.createElement('img');
+	        img.src = item.src;
+	        img.alt = item.alt;
+	        img.loading = 'lazy';
+	        
+	        if (index >= visibleImages) {
+	            img.style.display = 'none';
+	        }
+	
+	        img.onclick = () => openLightbox(index);
+	        gallery.appendChild(img);
+	    });
+	
+	    // 2. DANACH Masonry initialisieren
+	    let msnry;
+	    imagesLoaded(gallery, function() {
+	        msnry = new Masonry(gallery, {
+	            itemSelector: '.gallery img',
+	            percentPosition: true,
+	            gutter: 12
+	        });
+	    });
+	
+	    function preloadNeighbors(index) {
+	        const prevIndex = (index - 1 + images.length) % images.length;
+	        const nextIndex = (index + 1) % images.length;
+	        if(images[prevIndex]) new Image().src = images[prevIndex].src;
+	        if(images[nextIndex]) new Image().src = images[nextIndex].src;
+	    }
 
 		// Lightbox Funktionen
 		let currentIndex = 0;
