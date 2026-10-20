@@ -383,49 +383,44 @@
 			line-height: 1.6;
 		}
 
-		/* ========== PORTFOLIO & GALERIE (Masonry Layout) ========== */
+		/* ========== PORTFOLIO & GALERIE (Stabiles Zeilen-Masonry) ========== */
 		.portfolio-section {
-		    background-color: white;
+		    background-color: #FFFFFF;
 		    padding: 25px;
-		    border-radius: 3px;
+		    border-radius: 0;
 		    border: 1px solid rgba(11, 46, 48, 0.12);
 		}
 		
-		/* Echter Masonry-Effekt über CSS Columns */
 		.gallery {
-		    column-count: 3;          /* 3 Spalten am Desktop */
-		    column-gap: 12px;         /* Abstand zwischen den Spalten */
-		    background-color: #FFFFFF;   /* Schwarzer Hintergrund für den edlen Rahmen-Look */
+		    background-color: #FFFFFF;
 		    padding: 12px;
-		    border: 8px solid #FFFFFF;   /* Kräftiger äußerer Rahmen */
+		    width: 100%;
 		}
 		
+		/* Jedes Bild nimmt auf Desktop ca. 33% der Breite ein minus Gap */
 		.gallery img {
-		    width: 100%;
-		    height: auto;             /* Behält das originale Seitenverhältnis (kein Zuschneiden!) */
+		    width: calc(33.333% - 12px);
+		    margin-bottom: 12px;
 		    display: block;
-		    margin-bottom: 12px;      /* Abstand unter den Bildern im Spaltenfluss */
-		    border-radius: 0px;
+		    border-radius: 0; /* Scharfe, eckige Kanten */
 		    cursor: pointer;
-		    break-inside: avoid;      /* Verhindert unglückliche Umbrüche über Spalten hinweg */
-		    transition: filter 0.2s ease, transform 0.2s ease;
+		    transition: filter 0.2s ease;
 		}
 		
 		.gallery img:hover {
 		    filter: brightness(1.05);
-		    transform: scale(1.01);
 		}
 		
-		/* Responsives Verhalten für Tablets und Smartphones */
+		/* Responsiv für Tablet (50%) und Handy (100%) */
 		@media (max-width: 900px) {
-		    .gallery {
-		        column-count: 2;      /* 2 Spalten auf Tablets */
+		    .gallery img {
+		        width: calc(50% - 8px);
 		    }
 		}
 		
 		@media (max-width: 600px) {
-		    .gallery {
-		        column-count: 1;      /* 1 Spalte auf Smartphones */
+		    .gallery img {
+		        width: 100%;
 		    }
 		}
 		
