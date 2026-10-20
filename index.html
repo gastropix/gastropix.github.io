@@ -364,16 +364,10 @@
     </footer>
     <!-- Externe JavaScript-Datei -->
 	
-	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-	
 	<script>
 	    // Initialisiere Lightbox-Elemente
 	    const lightbox = document.getElementById('lightbox');
 	    const sliderContainer = document.getElementById('slider-container');
-	    
-	    const IMAGES_PER_LOAD = 9;
-	    let visibleImages = 12; // Anfangs sichtbare Bilder
 	    
 	    // Manuelle Bilderrangfolge mit SEO-Alt-Texten
 	    const galleryItems = [
@@ -497,30 +491,43 @@
 
 		// Lightbox Funktionen
 		let currentIndex = 0;
-		let images = [];
+		const images = galleryItems;
 		let isAnimating = false;
 		let touchStartX = 0;
 		let touchStartY = 0;
 		let currentPosition = 0;
 
+		function loadSlide(i) {
+			const img = sliderContainer.children[i] && sliderContainer.children[i].querySelector('img');
+			if (img && !img.getAttribute('src')) img.src = img.dataset.src;
+		}
+
+		function preloadNeighbors(index) {
+			const n = galleryItems.length;
+			[index - 1, index, index + 1].forEach(i => loadSlide((i + n) % n));
+		}
+
 		function openLightbox(index) {
 			currentIndex = index;
-			preloadNeighbors(currentIndex);
-			images = Array.from(document.querySelectorAll('.gallery img'));
 			lightbox.classList.add('active');
 			document.body.style.overflow = 'hidden';
-			
-			// Slider vorbereiten
+
+			// Slider vorbereiten (Originalbilder werden erst bei Bedarf geladen)
 			sliderContainer.innerHTML = '';
-			images.forEach((img, i) => {
+			galleryItems.forEach(item => {
 				const slide = document.createElement('div');
 				slide.className = 'slider-item';
-				slide.innerHTML = `<img src="${img.src}" alt="Bild ${i + 1}">`;
+				const img = document.createElement('img');
+				img.alt = item.alt;
+				img.dataset.src = item.src;
+				slide.appendChild(img);
 				sliderContainer.appendChild(slide);
 			});
-			
+
 			currentPosition = -currentIndex * 100;
+			sliderContainer.style.transition = 'none';
 			sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+			preloadNeighbors(currentIndex);
 		}
 
 		function closeLightbox() {
@@ -639,26 +646,7 @@
 			}
 		});
 
-		// Weitere Funktionen (Load More Button, Smooth Scroll, etc.)
-		loadMoreButton.addEventListener('click', () => {
-		const allImages = Array.from(document.querySelectorAll('.gallery img'));
-		const firstNewIndex = visibleImages;       // Index des ersten Bildes, das gleich sichtbar wird
-		const lastNewIndex  = visibleImages + IMAGES_PER_LOAD - 1;
-
-		// 1) Nächsten Block anzeigen
-		for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
-			if (allImages[i]) {
-				allImages[i].style.display = 'block';
-			}
-		}
-		visibleImages += IMAGES_PER_LOAD;
-
-		// 2) Button ausblenden, wenn alle Bilder vorhanden sind
-		if (visibleImages >= allImages.length) {
-			loadMoreButton.style.display = 'none';
-		}
-	});
-
+		// Smooth Scroll
 		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 			anchor.addEventListener('click', function(e) {
 				e.preventDefault();
