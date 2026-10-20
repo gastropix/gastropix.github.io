@@ -391,46 +391,40 @@
 			border: 1px solid rgba(11, 46, 48, 0.12);
 		}
 
+		/* Echter Masonry-Effekt mit Spalten */
 		.gallery {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 25px; /* Fester Abstand */
-			padding: 25px;
+		  column-count: 3;       /* Anzahl der Spalten am Desktop */
+		  column-gap: 8px;       /* Abstand zwischen den Spalten */
+		  background-color: #000; /* Schwarzer Hintergrund für den Rahmen-Look */
+		  padding: 8px;
+		  border: 8px solid #000; /* Schwarzer Außenrahmen */
 		}
-
+		
 		.gallery img {
-			width: 330px;  /* Feste Breite */
-			height: 220px; /* Feste Höhe (3:2) */
-			object-fit: cover; /* Schneidet Bilder ggf. zu */
-			border-radius: 3px; /* Optional: Abgerundete Ecken */
-			flex-shrink: 0; /* Verhindert Schrumpfen */
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			cursor: pointer;
+		  width: 100%;
+		  height: auto;          /* Behält das originale Seitenverhältnis bei (kein Abschneiden!) */
+		  display: block;
+		  margin-bottom: 8px;    /* Abstand unter jedem Bild */
+		  cursor: pointer;
+		  break-inside: avoid;   /* Verhindert, dass ein Bild unglücklich getrennt wird */
+		  transition: filter 0.2s ease;
 		}
-
+		
 		.gallery img:hover {
-			transform: scale(1.05);
-			box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+		  filter: brightness(1.05);
 		}
-
-		.gallery img:nth-child(n+13) {
-			display: none;
+		
+		/* Responsiv für Tablets und Handys */
+		@media (max-width: 900px) {
+		  .gallery {
+		    column-count: 2;     /* Auf Tablets 2 Spalten */
+		  }
 		}
-
-		.load-more-btn {
-			display: block;
-			margin: 20px auto;
-			padding: 12px 28px;
-			font-family: 'Inter', sans-serif;
-			font-size: 1em;
-			font-weight: 500;
-			color: white;
-			background-color: var(--secondary-color);
-			border: none;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: 0.3s ease;
+		
+		@media (max-width: 600px) {
+		  .gallery {
+		    column-count: 1;     /* Auf Handys 1 Spalte */
+		  }
 		}
 
 		.load-more-btn:hover {
