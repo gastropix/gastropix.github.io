@@ -397,12 +397,11 @@
 		    width: 100%;
 		}
 		
-		/* Jedes Bild nimmt auf Desktop ca. 33% der Breite ein minus Gap */
 		.gallery img {
-		    width: calc(33.333% - 12px);
+		    width: calc(33.333% - 8px); /* Exakte Berechnung für 3 Spalten mit 12px Gutter */
 		    margin-bottom: 12px;
 		    display: block;
-		    border-radius: 0; /* Scharfe, eckige Kanten */
+		    border-radius: 0;
 		    cursor: pointer;
 		    transition: filter 0.2s ease;
 		}
@@ -411,10 +410,15 @@
 		    filter: brightness(1.05);
 		}
 		
-		/* Responsiv für Tablet (50%) und Handy (100%) */
 		@media (max-width: 900px) {
 		    .gallery img {
-		        width: calc(50% - 8px);
+		        width: calc(50% - 6px); /* 2 Spalten auf Tablets */
+		    }
+		}
+		
+		@media (max-width: 600px) {
+		    .gallery img {
+		        width: 100%; /* 1 Spalte auf Handys */
 		    }
 		}
 		
