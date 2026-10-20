@@ -372,20 +372,34 @@
 		const IMAGES_PER_LOAD = 9;
 		let visibleImages = 12; // Anfangs sichtbare Bilder
 		
-		// Dynamisches Einfügen der Bilder
-		const totalImages = 51;
+		// Hier bestimmst du Reihenfolge, Dateinamen und Mondrian-Größe:
+		const galleryItems = [
+		    { src: 'bilder/gastro_01.jpg', size: 'm-big' },   /* Großes Quadrat */
+		    { src: 'bilder/gastro_02.jpg', size: 'normal' },  /* Normales Bild */
+		    { src: 'bilder/gastro_03.jpg', size: 'm-wide' },  /* Breites Bild */
+		    { src: 'bilder/gastro_04.jpg', size: 'm-tall' },  /* Hohes Bild */
+		    { src: 'bilder/gastro_05.jpg', size: 'normal' },
+		    // Trage hier alle weiteren Bilder in deiner Wunsch-Reihenfolge ein...
+		];
+		
 		const gallery = document.getElementById('gallery');
 		const loadMoreButton = document.getElementById('loadMore');
+		
+		galleryItems.forEach((item, index) => {
+		    const img = document.createElement('img');
+		    img.src = item.src;
+		    img.alt = `Hotelfotografie Bild ${index + 1}`;
+		    img.loading = 'lazy';
+		
+		    if (item.size && item.size !== 'normal') {
+		        img.classList.add(item.size);
+		    }
+		
+		    img.onclick = () => openLightbox(index);
+		    gallery.appendChild(img);
+		});
 
-		// Bildergalerie erstellen
-		for (let i = 1; i <= totalImages; i++) {
-			const img = document.createElement('img');
-			img.src = `bilder/gastro_${i.toString().padStart(2, '0')}.jpg`;
-			img.alt = `Bild ${i}`;
-			img.loading = 'lazy';
-			img.onclick = () => openLightbox(i - 1);
-			gallery.appendChild(img);
-		}
+		
 		
 		function preloadNeighbors(index) {
 			const prevIndex = (index - 1 + images.length) % images.length;
