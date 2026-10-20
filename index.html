@@ -430,46 +430,70 @@
 	        { src: 'bilder/gastro_51.jpg', alt: 'Paar genießt Getränke auf der Terrasse mit Bergkulisse' }
 	    ];
 	
-	    const gallery = document.getElementById('gallery');
+	    const IMAGES_PER_LOAD = 12;
+		let visibleCount = 12;        // anfangs sichtbare Bilder
+		
+		const gallery = document.getElementById('gallery');
 		const loadMoreButton = document.getElementById('loadMore');
 		
-		// 1. Bilder anzeigen
-		galleryItems.forEach((item, index) => {
-		    const img = document.createElement('img');
-		    img.src = item.src;
-		    img.alt = item.alt;
-		    img.loading = 'lazy';
-		    
-		    if (index >= visibleImages) {
-		        img.style.display = 'none';
+		const mqTablet = window.matchMedia('(max-width: 900px)');
+		const mqPhone = window.matchMedia('(max-width: 600px)');
+		const getColumns = () => (mqPhone.matches ? 1 : mqTablet.matches ? 2 : 3);
+		
+		// Galerie zeigt die kleinen Vorschaubilder, die Lightbox das Original
+		const thumbOf = src => src.replace('bilder/', 'bilder/thumbs/');
+		
+		let columns = [];
+		
+		function buildColumns() {
+		    gallery.innerHTML = '';
+		    columns = [];
+		    for (let c = 0; c < getColumns(); c++) {
+		        const col = document.createElement('div');
+		        col.className = 'gallery-col';
+		        gallery.appendChild(col);
+		        columns.push(col);
 		    }
+		}
 		
-		    img.onclick = () => openLightbox(index);
-		    gallery.appendChild(img);
-		});
+		function addImages(from, to) {
+		    for (let index = from; index < to; index++) {
+		        const item = galleryItems[index];
+		        const img = document.createElement('img');
+		        img.src = thumbOf(item.src);
+		        img.alt = item.alt;
+		        if (item.w && item.h) { img.width = item.w; img.height = item.h; }
+		        img.loading = 'lazy';
+		        img.decoding = 'async';
+		        // Falls ein Vorschaubild fehlt, Original laden
+		        img.onerror = () => { img.onerror = null; img.src = item.src; };
+		        img.onclick = () => openLightbox(index);
+		        // Bild 1 → Spalte 1, Bild 2 → Spalte 2, Bild 3 → Spalte 3, Bild 4 → wieder Spalte 1 ...
+		        columns[index % columns.length].appendChild(img);
+		    }
+		}
 		
-		// 2. "Weitere Bilder anzeigen" Button Logik
+		function updateButton() {
+		    loadMoreButton.style.display = visibleCount >= galleryItems.length ? 'none' : 'block';
+		}
+		
+		function renderGallery() {
+		    buildColumns();
+		    addImages(0, Math.min(visibleCount, galleryItems.length));
+		    updateButton();
+		}
+		
 		loadMoreButton.addEventListener('click', () => {
-		    const allImages = Array.from(document.querySelectorAll('.gallery img'));
-		    
-		    for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
-		        if (allImages[i]) {
-		            allImages[i].style.display = 'block';
-		        }
-		    }
-		    visibleImages += IMAGES_PER_LOAD;
-		
-		    if (visibleImages >= allImages.length) {
-		        loadMoreButton.style.display = 'none';
-		    }
+		    const from = visibleCount;
+		    visibleCount = Math.min(visibleCount + IMAGES_PER_LOAD, galleryItems.length);
+		    addImages(from, visibleCount);
+		    updateButton();
 		});
-	
-	    function preloadNeighbors(index) {
-	        const prevIndex = (index - 1 + images.length) % images.length;
-	        const nextIndex = (index + 1) % images.length;
-	        if(images[prevIndex]) new Image().src = images[prevIndex].src;
-	        if(images[nextIndex]) new Image().src = images[nextIndex].src;
-	    }
+		
+		// Bei Wechsel Desktop/Tablet/Handy neu aufbauen (3 / 2 / 1 Spalten)
+		mqTablet.addEventListener('change', renderGallery);
+		mqPhone.addEventListener('change', renderGallery);
+		renderGallery();
 
 		// Lightbox Funktionen
 		let currentIndex = 0;
