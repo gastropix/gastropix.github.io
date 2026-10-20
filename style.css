@@ -383,7 +383,7 @@
 			line-height: 1.6;
 		}
 
-		/* ========== PORTFOLIO & GALERIE (Stabiles Zeilen-Masonry) ========== */
+		/* ========== PORTFOLIO GALERIE (Sauberes Zeilen-Grid) ========== */
 		.portfolio-section {
 		    background-color: #FFFFFF;
 		    padding: 25px;
@@ -392,36 +392,36 @@
 		}
 		
 		.gallery {
-		    background-color: #FFFFFF;
-		    padding: 12px;
+		    display: flex;
+		    flex-wrap: wrap;
+		    gap: 12px; /* Gleichmäßiger Abstand horizontal & vertikal */
 		    width: 100%;
+		    background-color: #FFFFFF;
 		}
 		
+		/* 3 Spalten auf Desktop */
 		.gallery img {
-		    width: calc(33.333% - 8px); /* Exakte Berechnung für 3 Spalten mit 12px Gutter */
-		    margin-bottom: 12px;
+		    width: calc(33.333% - 8px);
+		    height: auto;
+		    object-fit: cover;
 		    display: block;
 		    border-radius: 0;
 		    cursor: pointer;
-		    transition: filter 0.2s ease;
+		    transition: filter 0.2s ease, transform 0.2s ease;
 		}
 		
 		.gallery img:hover {
 		    filter: brightness(1.05);
 		}
 		
+		/* 2 Spalten auf Tablet */
 		@media (max-width: 900px) {
 		    .gallery img {
-		        width: calc(50% - 6px); /* 2 Spalten auf Tablets */
+		        width: calc(50% - 6px);
 		    }
 		}
 		
-		@media (max-width: 600px) {
-		    .gallery img {
-		        width: 100%; /* 1 Spalte auf Handys */
-		    }
-		}
-		
+		/* 1 Spalte auf Handy */
 		@media (max-width: 600px) {
 		    .gallery img {
 		        width: 100%;
