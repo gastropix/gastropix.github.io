@@ -935,15 +935,9 @@
 		  cursor: pointer;
 		}
 
-		/* Hover: Email- und Telefonnummer-Span werden sekundär (schwarz) */
-		#contact span.contact-link:hover {
-		  color: var(--secondary-color);
-		}
+		
 
-		/* Hover: Homepage-Link wird sekundär (schwarz) */
-		#contact a.contact-link:hover {
-		  color: var(--secondary-color);
-		}
+		
 
 		/* Basis-Transition für Instagram-Icon */
 		#contact .contact-link .contact-icon {
@@ -967,9 +961,15 @@
 		  transition: color 0.3s ease;
 		}
 
-		/* Hover-Zustand: Instagram-Label wird langsam schwarz */
+		/* Hover für alle Links/Texte im Kontaktbereich */
+		#contact .contact-link:hover,
 		#contact .contact-link:hover .instagram-label {
-		  color: #000;
+		  color: #ffffff; /* Oder var(--primary-color) für Gold */
+		}
+		
+		/* Hover für das Instagram-Icon: Auf Weiß/Hell anpassen statt Schwarz */
+		#contact .contact-link:hover .contact-icon {
+		  filter: brightness(0) invert(1);
 		}
 
 
