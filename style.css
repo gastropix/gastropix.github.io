@@ -383,58 +383,69 @@
 			line-height: 1.6;
 		}
 
-		/* ========== PORTFOLIO & GALERIE ========== */
+		/* ========== PORTFOLIO & GALERIE (Masonry Layout) ========== */
 		.portfolio-section {
-			background-color: white;
-			padding: 25px;
-			border-radius: 3px;
-			border: 1px solid rgba(11, 46, 48, 0.12);
+		    background-color: white;
+		    padding: 25px;
+		    border-radius: 3px;
+		    border: 1px solid rgba(11, 46, 48, 0.12);
 		}
-
+		
+		/* Echter Masonry-Effekt über CSS Columns */
 		.gallery {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 25px; /* Fester Abstand */
-			padding: 25px;
+		    column-count: 3;          /* 3 Spalten am Desktop */
+		    column-gap: 12px;         /* Abstand zwischen den Spalten */
+		    background-color: #000;   /* Schwarzer Hintergrund für den edlen Rahmen-Look */
+		    padding: 12px;
+		    border: 8px solid #000;   /* Kräftiger äußerer Rahmen */
 		}
-
+		
 		.gallery img {
-			width: 330px;  /* Feste Breite */
-			height: 220px; /* Feste Höhe (3:2) */
-			object-fit: cover; /* Schneidet Bilder ggf. zu */
-			border-radius: 3px; /* Optional: Abgerundete Ecken */
-			flex-shrink: 0; /* Verhindert Schrumpfen */
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			cursor: pointer;
+		    width: 100%;
+		    height: auto;             /* Behält das originale Seitenverhältnis (kein Zuschneiden!) */
+		    display: block;
+		    margin-bottom: 12px;      /* Abstand unter den Bildern im Spaltenfluss */
+		    border-radius: 2px;
+		    cursor: pointer;
+		    break-inside: avoid;      /* Verhindert unglückliche Umbrüche über Spalten hinweg */
+		    transition: filter 0.2s ease, transform 0.2s ease;
 		}
-
+		
 		.gallery img:hover {
-			transform: scale(1.05);
-			box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+		    filter: brightness(1.05);
+		    transform: scale(1.01);
 		}
-
-		.gallery img:nth-child(n+13) {
-			display: none;
+		
+		/* Responsives Verhalten für Tablets und Smartphones */
+		@media (max-width: 900px) {
+		    .gallery {
+		        column-count: 2;      /* 2 Spalten auf Tablets */
+		    }
 		}
-
+		
+		@media (max-width: 600px) {
+		    .gallery {
+		        column-count: 1;      /* 1 Spalte auf Smartphones */
+		    }
+		}
+		
 		.load-more-btn {
-			display: block;
-			margin: 20px auto;
-			padding: 12px 28px;
-			font-family: 'Inter', sans-serif;
-			font-size: 1em;
-			font-weight: 500;
-			color: white;
-			background-color: var(--secondary-color);
-			border: none;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: 0.3s ease;
+		    display: block;
+		    margin: 25px auto 0 auto;
+		    padding: 12px 28px;
+		    font-family: 'Inter', sans-serif;
+		    font-size: 1em;
+		    font-weight: 500;
+		    color: white;
+		    background-color: var(--secondary-color);
+		    border: none;
+		    border-radius: 3px;
+		    cursor: pointer;
+		    transition: background-color 0.3s ease;
 		}
-
+		
 		.load-more-btn:hover {
-			background-color: var(--primary-color);
+		    background-color: var(--primary-color);
 		}
 
 		/* ========== LIGHTBOX ========== */
