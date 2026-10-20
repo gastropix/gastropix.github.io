@@ -372,20 +372,32 @@
 		const IMAGES_PER_LOAD = 9;
 		let visibleImages = 12; // Anfangs sichtbare Bilder
 		
-		// Dynamisches Einfügen der Bilder
-		const totalImages = 51;
-		const gallery = document.getElementById('gallery');
-		const loadMoreButton = document.getElementById('loadMore');
+		// Manuelle Bilderrangfolge mit SEO-Alt-Texten
+        const galleryItems = [
+            { src: 'bilder/gastro_01.jpg', alt: 'Luxuriöse Hotel-Lobby und Empfangsbereich' },
+            { src: 'bilder/gastro_02.jpg', alt: 'Professionelle Food-Fotografie im Restaurant' },
+            { src: 'bilder/gastro_03.jpg', alt: 'Modernes Hotelzimmer mit stilvoller Inneneinrichtung' },
+            // Trage hier Zeile für Zeile alle deine Bilder ein...
+        ];
+        
+        const gallery = document.getElementById('gallery');
+        const loadMoreButton = document.getElementById('loadMore');
 
-		// Bildergalerie erstellen
-		for (let i = 1; i <= totalImages; i++) {
-			const img = document.createElement('img');
-			img.src = `bilder/gastro_${i.toString().padStart(2, '0')}.jpg`;
-			img.alt = `Bild ${i}`;
-			img.loading = 'lazy';
-			img.onclick = () => openLightbox(i - 1);
-			gallery.appendChild(img);
-		}
+        // Galerie dynamisch aus dem Array aufbauen
+        galleryItems.forEach((item, index) => {
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            img.loading = 'lazy';
+            
+            // Anfangs nur die ersten 'visibleImages' anzeigen (für den "Load More"-Button)
+            if (index >= visibleImages) {
+                img.style.display = 'none';
+            }
+
+            img.onclick = () => openLightbox(index);
+            gallery.appendChild(img);
+        });
 		
 		function preloadNeighbors(index) {
 			const prevIndex = (index - 1 + images.length) % images.length;
