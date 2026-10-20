@@ -395,9 +395,9 @@
 		.gallery {
 		    column-count: 3;          /* 3 Spalten am Desktop */
 		    column-gap: 12px;         /* Abstand zwischen den Spalten */
-		    background-color: #000;   /* Schwarzer Hintergrund für den edlen Rahmen-Look */
+		    background-color: #FFFFFF;   /* Schwarzer Hintergrund für den edlen Rahmen-Look */
 		    padding: 12px;
-		    border: 8px solid #000;   /* Kräftiger äußerer Rahmen */
+		    border: 8px solid #FFFFFF;   /* Kräftiger äußerer Rahmen */
 		}
 		
 		.gallery img {
@@ -405,7 +405,7 @@
 		    height: auto;             /* Behält das originale Seitenverhältnis (kein Zuschneiden!) */
 		    display: block;
 		    margin-bottom: 12px;      /* Abstand unter den Bildern im Spaltenfluss */
-		    border-radius: 2px;
+		    border-radius: 0px;
 		    cursor: pointer;
 		    break-inside: avoid;      /* Verhindert unglückliche Umbrüche über Spalten hinweg */
 		    transition: filter 0.2s ease, transform 0.2s ease;
