@@ -448,8 +448,9 @@
 	        { src: 'bilder/gastro_51.jpg', alt: 'Paar genießt Getränke auf der Terrasse mit Bergkulisse' }
 	    ];
 	
-	    const IMAGES_PER_LOAD = 18;
-		let visibleCount = 15;        // anfangs sichtbare Bilder
+		const IMAGES_PER_LOAD = 18;
+		const LOAD_ALL_AT_ONCE = false; // Auf true setzen, um alle auf einmal zu laden
+		let visibleCount = 15;
 		
 		const gallery = document.getElementById('gallery');
 		const loadMoreButton = document.getElementById('loadMore');
@@ -500,10 +501,14 @@
 		    addImages(0, Math.min(visibleCount, galleryItems.length));
 		    updateButton();
 		}
-		
+
 		loadMoreButton.addEventListener('click', () => {
 		    const from = visibleCount;
-		    visibleCount = Math.min(visibleCount + IMAGES_PER_LOAD, galleryItems.length);
+		    if (LOAD_ALL_AT_ONCE) {
+		        visibleCount = galleryItems.length;
+		    } else {
+		        visibleCount = Math.min(visibleCount + IMAGES_PER_LOAD, galleryItems.length);
+		    }
 		    addImages(from, visibleCount);
 		    updateButton();
 		});
