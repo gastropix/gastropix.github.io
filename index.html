@@ -1,296 +1,700 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mathematik &amp; Physik Nachhilfe – Sebastian Pillinger, MSc</title>
-  <meta name="description" content="Online-Nachhilfe in Mathematik und Physik bis zur Matura. Live per Videochat und Whiteboard. Jetzt gratis Probeeinheit vereinbaren.">
-  <link rel="stylesheet" href="style.css">
+    <!-- Meta-Tags für Zeichenkodierung, Viewport und SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionelle Hotelfotografie für Tourismus und Kulinarik. Wir machen Aufnahmen während des Betriebs – jetzt anfragen!">
+    <meta name="keywords" content="Hotelfotografie, Tourismusfotografie, Kulinarikfotografie, Fotografie, Hotel, Restaurant">
+    <meta property="og:title" content="Hotelfotografie für Tourismus und Kulinarik">
+    <meta property="og:description" content="Professionelle Hotelfotografie für Tourismus und Kulinarik. Wir machen Aufnahmen während des Betriebs – jetzt anfragen!">
+    <meta property="og:image" content="https://gastropix.at/bilder/og-share.jpg">
+    <meta property="og:url" content="https://gastropix.at">
+    <title>Hotelfotografie für Tourismus und Kulinarik</title>
+    <!-- Google Fonts für das Design -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+	<!-- Structured Data (Schema.org / JSON-LD für Google) -->
+    <script type="application/ld+json">
+	    {
+	      "@context": "https://schema.org",
+	      "@type": "ProfessionalService",
+	      "name": "Gastropix",
+	      "description": "Professionelle Hotelfotografie für Tourismus und Kulinarik",
+	      "url": "https://gastropix.at/",
+	      "founder": [
+	        {
+	          "@type": "Person",
+	          "name": "Klaus Mitterhauser",
+	          "sameAs": "https://www.klaus-mitterhauser.at/"
+	        },
+	        {
+	          "@type": "Person",
+	          "name": "Sebastian Pillinger",
+	          "sameAs": "https://www.sebastian-pillinger.at/"
+	        }
+	      ]
+	    }
+    </script>
+	
 </head>
 <body>
+    <!-- Modal für vergrößerte Bilder -->
+    <div class="lightbox" id="lightbox">
+		<div class="slider-container" id="slider-container"></div>
+		<span class="lightbox-arrow prev" unselectable="on" onclick="event.stopPropagation(); changeImage(-1)">❮</span>
+		<span class="lightbox-arrow next" unselectable="on" onclick="event.stopPropagation(); changeImage(1)">❯</span>
+		<button class="lightbox-close" aria-label="Lightbox schließen">✕</button>
+	</div>
 
-<header class="topbar">
-  <a class="brand" href="#top">Sebastian Pillinger, MSc</a>
-  <nav aria-label="Hauptmenü">
-    <a href="#angebot">Angebot</a>
-    <a href="#whiteboard">Whiteboard</a>
-    <a href="#ueber-mich">Über mich</a>
-    <a href="#faq">Fragen</a>
-    <a class="btn btn-small btn-login" href="#schueler-login">Meine Unterlagen</a>
-    <a class="btn btn-small" href="#kontakt">Kontakt</a>
-  </nav>
-</header>
+    <!-- Hauptnavigation -->
+    <nav aria-label="Hauptnavigation">
+		<button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+			<span></span><span></span><span></span>
+		</button>
+		<div class="nav-links" id="navLinks">
+			<a href="#about">Über uns</a>
+			<a href="#portfolio">Portfolio</a>
+	        <a href="#services">Leistungen</a>
+	        <a href="#process">Ablauf</a>
+	        <a href="#faq">FAQ</a>
+	        <a href="#testimonials">Referenzen</a>
+	        <a href="#contact">Kontakt</a>
+		</div>
+    </nav>
+    <!-- Header mit Titel -->
+    <header>
+        <h1>Hotel,<br> Tourismus<br> und Kulinarik</h1>
+        <a href="#contact-form" class="cta-button">Jetzt Anfrage stellen</a>
+    </header>
+	
+	<!-- Über uns Abschnitt -->
+<section id="about">
+    <h2>Über uns</h2>
+    <p>Wir sind Sebastian Pillinger und Klaus Mitterhauser, zwei professionelle Fotografen spezialisiert auf Hotelfotografie, Tourismus und Kulinarik. Mit viel Herzblut und Engagement portraitieren wir Ihren Gastrobetrieb, verleihen Ihrem Auftritt die persönliche Note und erzeugen bei Ihren Gästen den perfekten ersten Eindruck! Ihre Wünsche und Bedürfnisse sind unsere Herausforderungen, die wir mit viel Erfahrung und Engagement gemeinsam meistern werden!</p>
+    <p class="einsatzgebiet">Wir sind österreichweit für Sie unterwegs, mit Hauptstandorten in Graz und Kirchdorf an der Krems.</p>
+    
+    <div class="about-container">
+        <!-- Klaus Mitterhauser -->
+        <div class="about-person">
+            <div class="about-image">
+                <img src="bilder/portrait1.jpg" alt="Klaus Mitterhauser" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h3>Klaus Mitterhauser</h3>
+                <p class="title">Meisterfotograf</p>
+                <p>Mein Betrieb besteht bereits seit 2001. Als ehemaliger Absolvent einer Höheren Tourismusschule bringe ich viel Verständnis für die Gastronomie bei unseren Shootings mit. Unkomplizierte Abläufe, maximale Ergebnisse ohne den laufenden Betrieb aufzuhalten sowie Liebe zum Detail zeichnen unsere Arbeiten aus. Gerne beraten wir Sie auch bei der Planung Ihres individuellen Fotoshootings!</p>
+            </div>
+        </div>
 
-<main id="top">
+        <!-- Sebastian Pillinger -->
+        <div class="about-person">
+            <div class="about-image">
+                <img src="bilder/portrait2.jpg" alt="Sebastian Pillinger" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h3>Sebastian Pillinger</h3>
+                <p class="title">MSc.</p>
+                <p>Bereits vor meinem Masterstudium an der FH JOHANNEUM in Graz beschäftigte ich mich mit digitaler Bildbearbeitung, Mediendesign und Videoschnitt. Künstliche Intelligenz hat lange in der Fotografie Einzug gehalten und ich setze diese digitalen Instrumente als neue Hilfsmittel vorsichtig bei der Datenaufbereitung ein! Als Eventfotograf bei Kultur- und Sportveranstaltungen bin ich in ganz Österreich im Einsatz!</p>
+            </div>
+        </div>
 
-<!-- ========================================================= -->
-<!-- 1. HERO-SEKTION (Oben in index.html)                      -->
-<!-- ========================================================= -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Mathematik &amp; Physik Nachhilfe</h1>
-      <p class="lead">Klar erklärt, strukturiert und zielgerichtet bis zur Matura. Online, live und direkt mit dir.</p>
-      
-      <!-- CTA Buttons: WhatsApp + E-Mail Formular -->
-      <div class="hero-buttons">
-        <a class="btn" href="https://wa.me/4367762026186?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20gratis%20Probeeinheit%20vereinbaren." target="_blank" rel="noopener">Per WhatsApp schreiben</a>
-        <a class="btn btn-secondary" href="#kontaktformular">E-Mail schreiben</a>
+		<!-- Helga Mittermayr -->
+        <div class="about-person">
+            <div class="about-image">
+                <img src="bilder/portrait3.jpg" alt="Helga Mittermayr" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h3>Helga Mittermayr</h3>
+                <p class="title">Organisation & Backoffice</p>
+                <p>Ich kümmere mich bei gastropix um Kundenanfragen, Terminplanung und die organisatorischen Aufgaben rund um unsere Fotoshootings. Damit sich Klaus und Sebastian ganz auf ihre kreative Arbeit konzentrieren können, halte ich ihnen im Hintergrund den Rücken frei. Bei Bedarf unterstütze ich die beiden auch direkt bei den Shootings. So sorge ich dafür, dass von der ersten Anfrage bis zum fertigen Fotoshooting alles möglichst unkompliziert und reibungslos abläuft.</p>
+            </div>
+        </div>
+    </div>
+</section>
+	
+    <!-- Portfolio Abschnitt -->
+	<section id="portfolio">
+		<h2>Portfolio</h2>
+		<div class="portfolio-section">
+			<div class="portfolio-gallery">
+				<div class="gallery" id="gallery"></div> <!-- Hier werden die Bilder dynamisch eingefügt -->
+				<button id="loadMore" class="load-more-btn">Weitere Bilder anzeigen</button>
+			</div>
+		</div>
+	</section>
+
+    <!-- Leistungen Abschnitt -->
+	<section id="services" class="services-section">
+  <h2>Leistungen</h2>
+
+  <!-- Services-Container: Desktop=Grid, Mobile=Scroll-Snap -->
+  <div class="services-container">
+    <!-- 1. Hotelfotografie -->
+    <div class="service-item">
+      <div class="service-icon">
+        <img src="bilder/leistung-hotel.jpg" alt="Hotelfotografie Icon" loading="lazy">
       </div>
-      <p class="hint">Gratis Probeeinheit &middot; Unverbindlich &amp; schnell</p>
+      <h3>Hotelfotografie</h3>
+      <p>Authentische Aufnahmen von Lobby, Zimmern und Außenbereich. Wir kreieren einzigartige Fotos mit Stimmung und Leben - unkompliziert und auch während des laufenden Betriebes.</p>
     </div>
 
-    <!-- Bild NH_GratisProbeeinheit.png oben rechts / im Hero -->
-    <div class="hero-image-wrap">
-      <figure class="hero-qr">
-        <div class="hero-qr-badge">Gratis Probeeinheit</div>
-        <a class="qr-link" href="https://wa.me/4367762026186?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20gratis%20Probeeinheit%20vereinbaren." target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben und gratis Probeeinheit sichern">
-          <img src="bilder/NH_GratisProbeeinheit.png" alt="QR-Code: scannen und gratis Probeeinheit erhalten" class="hero-qr-img">
-        </a>
-        <figcaption>QR-Code scannen oder antippen und per WhatsApp deine gratis Probeeinheit sichern</figcaption>
-      </figure>
+    <!-- 2. Flugaufnahmen -->
+    <div class="service-item">
+      <div class="service-icon">
+        <img src="bilder/leistung-flug.jpg" alt="Flugaufnahmen Icon" loading="lazy">
+      </div>
+      <h3>Flugaufnahmen</h3>
+      <p>Luftbild-Perspektiven für Hotel &amp; Umgebung: Drohnenaufnahmen in 4K, um Lage, Außenanlagen und Umgebung eindrucksvoll darzustellen.</p>
     </div>
+
+    <!-- 3. Food-Fotografie -->
+    <div class="service-item">
+      <div class="service-icon">
+        <img src="bilder/leistung-food.jpg" alt="Food-Fotografie Icon" loading="lazy">
+      </div>
+      <h3>Food-Fotografie</h3>
+      <p>Professionelle Detailaufnahmen Ihrer kulinarischen Kreationen. Liebevoll arrangiert und perfekt ausgeleuchtet erwecken diese Aufnahmen gusto auf mehr!</p>
+    </div>
+
+    <!-- 4. Video für Social Media -->
+    <div class="service-item">
+      <div class="service-icon">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/ZPsUzqXITGg?si=e0VXUXF1lUyr5uDW"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <h3>Video für Social Media</h3>
+      <p>Kurzvideos &amp; Teaserclips für Instagram, Facebook &amp; Co. – wir setzen Ihr Haus und Ihre Küche in Szene, perfekt zugeschnitten auf die Sozialen Netzwerke.</p>
+    </div>
+  </div>
+
+  <!-- Punkt-Navigation unterhalb des Carousels -->
+  <div class="carousel-indicators">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
   </div>
 </section>
 
-  <!-- Angebot -->
-  <section id="angebot" class="section">
-    <div class="wrap">
-      <h2>Dein Weg zum Erfolg</h2>
-      <ul class="features">
-        <li><strong>Moderner Online-Unterricht</strong> Du brauchst nur Handy oder Laptop und eine Internetverbindung.</li>
-        <li><strong>Zielgerichtet bis zur Matura</strong> Wir arbeiten genau an dem, was in Schularbeit und Prüfung kommt.</li>
-        <li><strong>Flexibel &amp; direkt via Videochat</strong> Kein Anfahrtsweg, Termine nach Absprache.</li>
-        <li><strong>Live Whiteboard</strong> Ich rechne und zeichne in Echtzeit mit und teile meinen Bildschirm.</li>
-        <li><strong>Mitschrift als PDF</strong> Nach jeder Einheit bekommst du das Whiteboard zum Nachlesen.</li>
-      </ul>
-      <p class="subjects">Mathematik und Physik &middot; Unterstufe und Oberstufe &middot; Schularbeiten &middot; Matura</p>
-    </div>
-  </section>
 
-  <!-- Whiteboard -->
-  <section id="whiteboard" class="section tint">
-    <div class="wrap split">
-      <div>
-        <h2>So sieht eine Einheit aus</h2>
-        <p>Wir sprechen per Videochat, ich teile meinen Bildschirm und entwickle die Lösung Schritt für Schritt am Whiteboard. Du siehst jeden Rechenschritt entstehen und kannst jederzeit nachfragen.</p>
-        <p>Am Ende der Einheit bekommst du die komplette Mitschrift als PDF.</p>
-      </div>
-      <figure class="board">
-        <img src="bilder/Whiteboard-Beispiel.jpg" alt="Beispiel eines Whiteboards aus einer Nachhilfeeinheit">
-        <figcaption>Beispiel aus einer Einheit</figcaption>
-      </figure>
-    </div>
-  </section>
 
-  <!-- Über mich -->
-  <section id="ueber-mich" class="section">
-    <div class="wrap split">
-      <div class="hex hex-photo small">
-        <img src="bilder/Portrait-1.jpg" alt="Porträt von Sebastian Pillinger">
-      </div>
-      <div>
-        <h2>Über mich</h2>
-        <p>Ich bin Sebastian Pillinger, Master of Science, und unterrichte Mathematik und Physik. Mein Ziel: Aufgaben, die kompliziert wirken, in kleine, verständliche Schritte zu zerlegen.</p>
-        <p>Ich weiß, wie Schularbeiten und Matura aufgebaut sind und wo die typischen Stolpersteine liegen. Darauf bereiten wir uns gezielt vor, in deinem Tempo und ohne Druck.</p>
-      </div>
-    </div>
-  </section>
+	<!-- Ablauf Abschnitt: 3 Schritte zum Ziel -->
+	<section id="process" class="process-section">
+		<h2>3 Schritte zum Ziel</h2>
+		<div class="process-container">
+			<!-- 1. Planung & Terminfindung -->
+			<div class="process-item">
+				<div class="process-number">1</div>
+				<h3>Planung &amp; Terminfindung</h3>
+				<p>In einem unverbindlichen Vorgespräch besprechen wir Ihre Wünsche, die Räumlichkeiten und legen gemeinsam den passenden Rahmen fest. Der Fototermin wird so geplant, dass auch Ausweichtermine wegen Wetter oder Überbuchung möglich sind.</p>
+			</div>
 
-  <!-- Ablauf -->
-  <section class="section tint">
-    <div class="wrap">
-      <h2>In drei Schritten zum Ziel</h2>
-      <ol class="steps">
-        <li><strong>Schreib mir</strong> Per WhatsApp oder Mail, ganz unverbindlich.</li>
-        <li><strong>Gratis Probeeinheit</strong> Wir schauen, wo es hakt und was dein Ziel ist, vom Genügend bis zur Bestnote.</li>
-        <li><strong>Durchstarten</strong> Regelmäßige Einheiten, abgestimmt auf dich und deine nächsten Prüfungen.</li>
-      </ol>
-    </div>
-  </section>
+			<!-- 2. Das Shooting -->
+			<div class="process-item">
+				<div class="process-number">2</div>
+				<h3>Das Shooting</h3>
+				<p>Je nach Aufwand fotografieren wir ein oder mehrere Tage im laufenden Betrieb: Außenaufnahmen und Flugaufnahmen, Innenarchitektur, Zimmer, Restaurant, Lobby, Speisen und Getränke - je nach Bedarf und auf Wunsch auch mit Mitarbeiter oder externen Models für authentische, kostengünstige Bildmotive. Gerne auch für Sommer und Winter, für eine ganzjährig stimmige Bildsprache.</p>
+			</div>
 
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="wrap narrow">
-      <h2>Häufige Fragen</h2>
-      <details>
-        <summary>Was kostet eine Einheit?</summary>
-        <p>34 € pro Einheit. Im 10er Paket gibt es eine Einheit geschenkt. Die erste Probeeinheit ist gratis.</p>
-      </details>
-      <details>
-        <summary>Wie lange dauert eine Einheit?</summary>
-        <p>50 Minuten</p>
-      </details>
-      <details>
-        <summary>Wo findet die Nachhilfe statt?</summary>
-        <p>Online per Videochat mit Bildschirmteilen. Du brauchst nur WhatsApp und ein Gerät mit Internet.</p>
-      </details>
-      <details>
-        <summary>Wie kurzfristig kann ich absagen?</summary>
-        <p>Da immer etwas dazwischenkommen kann, kannst du bis eine Stunde vorher kostenlos stornieren</p>
-      </details>
-    </div>
-  </section>
+			<!-- 3. Bearbeitung & Lieferung -->
+			<div class="process-item">
+				<div class="process-number">3</div>
+				<h3>Bearbeitung &amp; Lieferung</h3>
+				<p>Alle Bilder werden gesichtet, ausgewählt und professionell bearbeitet. Geliefert wird alles optimiert für Druck oder Homepage. Sie erhalten ALLE AUFNAHMEN mit ALLEN NUTZUNGSRECHTEN, ohne zeitlicher Beschränkung!</p>
+			</div>
+		</div>
+	</section>
 
-<!-- ========================================================= -->
-<!-- SCHÜLER-LOGIN                                             -->
-<!-- ========================================================= -->
-<section id="schueler-login" class="section tint login-section">
-  <div class="wrap narrow">
-    <h2>Meine Unterlagen</h2>
-    <p>Nach jeder Einheit bekommst du deine Mitschrift als PDF. Alles liegt in deinem persönlichen Ordner auf Google Drive.</p>
+	<div class="cta-inline-wrap">
+		<a href="#contact-form" class="cta-button">Jetzt unverbindlich anfragen</a>
+	</div>
 
-    <div class="login-card">
-      <p><strong>So kommst du zu deinen Unterlagen</strong></p>
-      <ol>
-        <li>Nach der ersten Einheit schicke ich dir den Link zu deinem Ordner.</li>
-        <li>Speichere den Link als Lesezeichen oder am Startbildschirm deines Handys.</li>
-        <li>Link verloren? Schreib mir kurz, ich schicke ihn dir nochmal.</li>
-      </ol>
-      <a class="btn btn-full" href="https://wa.me/4367762026186?text=Hallo%2C%20ich%20brauche%20den%20Link%20zu%20meinen%20Unterlagen." target="_blank" rel="noopener">Link anfordern</a>
-    </div>
-  </div>
-</section>
+	<!-- FAQ Abschnitt -->
+	<section id="faq" class="faq-section">
+		<h2>Häufig gestellte Fragen</h2>
+		<div class="faq-list">
+			<details class="faq-item">
+				<summary>Wie lange dauert ein Shooting?</summary>
+				<p>In der Regel planen wir 2 Tage inklusive Übernachtung vor Ort ein, damit wir alle Bereiche – Außen, Zimmer, Gastronomie und Gemeinschaftsflächen – in Ruhe und bei gutem Licht abdecken können.</p>
+			</details>
+			<details class="faq-item">
+				<summary>Können Sie während des laufenden Betriebs fotografieren?</summary>
+				<p>Ja, genau darauf sind wir spezialisiert. Wir stimmen den Ablauf vorab mit Ihnen ab (z. B. Frühstückszeiten, Zimmerreinigung), damit wir Ihren Betrieb möglichst wenig stören.</p>
+			</details>
+			<details class="faq-item">
+				<summary>Was, wenn das Wetter nicht mitspielt?</summary>
+				<p>Der Termin wird wetterabhängig geplant. Bei Bedarf verschieben wir kurzfristig auf einen Ausweichtermin, damit Außen- und Flugaufnahmen bei optimalen Bedingungen entstehen.</p>
+			</details>
+			<details class="faq-item">
+				<summary>Brauchen wir eigene Models?</summary>
+				<p>Nicht zwingend – gerne fotografieren wir mit Ihren Mitarbeiter:innen oder deren Familien. Das wirkt oft authentischer und ist kostengünstiger als professionelle Models.</p>
+			</details>
+			<details class="faq-item">
+				<summary>Wie lange dauert es, bis wir die fertigen Bilder erhalten?</summary>
+				<p>Nach dem Shooting sichten wir alle Aufnahmen, wählen die besten aus und bearbeiten sie professionell. Sie erhalten die Bilder fertig für Druck und Website.</p>
+			</details>
+			<details class="faq-item">
+				<summary>Was kostet ein Hotelshooting?</summary>
+				<p>Das hängt von der Größe Ihres Hauses und dem gewünschten Umfang ab. Nach einer kurzen Vorstellung Ihres Hauses erstellen wir Ihnen ein individuelles, passendes Angebot.</p>
+			</details>
+			<details class="faq-item">
+				<summary>In welchen Regionen sind Sie tätig?</summary>
+				<p>Wir sind österreichweit für Sie unterwegs, mit Hauptstandorten in Graz und Kirchdorf an der Krems.</p>
+			</details>
+		</div>
+	</section>
 
-<!-- ========================================================= -->
-<!-- 2. KONTAKT- / FORMULAR-SEKTION (Ersetzt die alte Kontakt) -->
-<!-- ========================================================= -->
-<section id="kontakt" class="section contact">
-  <div class="wrap contact-grid">
-    <div>
-      <h2>Jetzt gratis Probeeinheit vereinbaren</h2>
-      <p>Scanne den QR-Code mit deinem Smartphone oder schreibe mir direkt über das Formular bzw. per WhatsApp.</p>
-      <a class="btn" href="https://wa.me/4367762026186?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20gratis%20Probeeinheit%20vereinbaren." target="_blank" rel="noopener">
-        Per WhatsApp schreiben
-      </a>
-      <p class="hint">Oder direkt per Mail: <a href="mailto:nachhilfe@sebastian-pillinger.at">nachhilfe@sebastian-pillinger.at</a></p>
-    </div>
+    <!-- Referenzen Abschnitt -->
+    <section id="testimonials">
+	  <h2>Referenzen</h2>
+	  <div class="testimonials-slider">
+		<!-- Track mit allen Slides -->
+		<div class="slider-track">
+		 <!-- <div class="testimonial-item">
+			<p>„Klaus und Sebastian kamen nach einem Vorgespräch mit einem fix fertigen Drehbuch zu uns ins Haus. Während des laufenden Betriebes portraitierten sie mit viel Engagement 2 Tage lang völlig unkompliziert unser Hotel! Mit den fertigen Fotos sind wir mehr als zufrieden! Improvisationstalent, Verständnis für die Gastro und tolle Ideen - das zeichnet die beiden aus!“</p>
+			<cite>– Heinz Gasparini, GF Hotel Bad Hofgastein, PRO GE</cite>
+		  </div>   
+		 -->
+		  <div class="testimonial-item">
+			<p>„Die Fotos sind einfach der Wahnsinn – besonders die mit den kleinen und „großen“ Kindern. Wir haben so viel Freude damit! Auch die Aufnahmen im Speisesaal – inklusive der Eisbecher und der festlich gedeckten Tische – sind einfach großartig. Ich bin wirklich begeistert! Ein großes Dankeschön an dich, Klaus und Sebastian – ihr habt ein unglaubliches Talent und ein wunderbares Gespür für besondere Momente.“</p>
+			<cite>– NADINE KOGLER, <a href="https://www.proge-urlaub.at" target="_blank" rel="noopener noreferrer" class="contact-link">Urlaub & Seminar GmbH</a></cite>
+		  </div>
 
-    <!-- Bild / QR-Code Anzeige -->
-    <div class="qr-box">
-      <a class="qr-link" href="https://wa.me/4367762026186?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20gratis%20Probeeinheit%20vereinbaren." target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben und gratis Probeeinheit sichern">
-        <img class="qr" src="bilder/NH_GratisProbeeinheit.png" alt="QR-Code: scannen und gratis Probeeinheit erhalten" width="280" height="280" loading="lazy">
-      </a>
-    </div>
-  </div>
+		  <div class="testimonial-item">
+			<p>„Bilder sind spitze Klaus! Danke, genauso hab ich mir das vorgestellt!“</p>
+			<cite>– BRITTA SCHNÖLL, <a href="https://www.pension-schiessling.at" target="_blank" rel="noopener noreferrer" class="contact-link">Pension Schiessling</a></cite>
+		  </div>
+		  <!-- Weitere .testimonial-item hier -->
+		</div>
+		<!-- Navigation -->
+		<button class="slider-arrow prev" aria-label="Vorherige Referenz">❮</button>
+		<button class="slider-arrow next" aria-label="Nächste Referenz">❯</button>
+		<!-- Dots -->
+		<div class="slider-dots"></div>
+	  </div>
+	</section>
 
-  <!-- Integriertes E-Mail Formular -->
-  <div id="kontaktformular" class="wrap narrow form-container">
-    <h3>Direkt eine Nachricht senden</h3>
-    <form id="contact-form" action="https://formsubmit.co/nachhilfe@sebastian-pillinger.at" method="POST" class="contact-form">
-      <p id="form-status" class="form-status" role="status" aria-live="polite" hidden></p>
-      <!-- Spam-Falle: für Menschen unsichtbar -->
-      <div class="hp" aria-hidden="true"><label>Nicht ausfüllen <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-      <input type="hidden" name="_subject" value="Neue Nachhilfe-Anfrage über die Website">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <div class="form-group">
-        <label for="name">Dein Name / Name des Schülers:</label>
-        <input type="text" id="name" name="name" required placeholder="z. B. Max Mustermann">
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Deine E-Mail-Adresse:</label>
-        <input type="email" id="email" name="email" required placeholder="name@beispiel.at">
-      </div>
+    <!-- Kontaktformular Abschnitt -->
+    <section id="contact-form" class="contact-form-section">
+        <h2>Jetzt Anfrage stellen</h2>
+        <p class="contact-form-intro">Erzählen Sie uns kurz von Ihrem Haus – wir melden uns zeitnah mit einem passenden Vorschlag.</p>
+        <form class="contact-form" action="https://formsubmit.co/foto@sebastian-pillinger.at" method="POST">
+            <input type="hidden" name="_subject" value="Neue Anfrage über die Website">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="cf-name">Name</label>
+                    <input type="text" id="cf-name" name="Name" required>
+                </div>
+                <div class="form-field">
+                    <label for="cf-hotel">Hotel / Betrieb</label>
+                    <input type="text" id="cf-hotel" name="Hotel" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="cf-email">E-Mail</label>
+                    <input type="email" id="cf-email" name="E-Mail" required>
+                </div>
+                <div class="form-field">
+                    <label for="cf-zeitraum">Gewünschter Zeitraum</label>
+                    <input type="text" id="cf-zeitraum" name="Gewünschter Zeitraum" placeholder="z. B. Frühjahr 2027">
+                </div>
+            </div>
+            <div class="form-field form-field-full">
+                <label for="cf-nachricht">Nachricht</label>
+                <textarea id="cf-nachricht" name="Nachricht" rows="5" placeholder="Erzählen Sie uns kurz von Ihrem Hotel und Ihren Wünschen"></textarea>
+            </div>
+            <button type="submit" class="cta-button">Anfrage absenden</button>
+        </form>
+    </section>
 
-      <div class="form-group">
-        <label for="fach">Klasse / Fach:</label>
-        <input type="text" id="fach" name="fach" placeholder="z. B. 7. Klasse AHS – Mathematik">
-      </div>
+    <!-- Kontakt Abschnitt -->
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Für Professionelle Aufnahmen Ihres Hotels während dem Normalbetrieb:</p>
 
-      <div class="form-group">
-        <label for="message">Deine Nachricht:</label>
-        <textarea id="message" name="nachricht" rows="4" required placeholder="Worum geht es oder wann hättest du Zeit für die Probeeinheit?"></textarea>
-      </div>
+        <div class="contact-people">
+            <div class="contact-person">
+                <h3>Klaus Mitterhauser</h3>
+                <p>Email: <span class="contact-link" data-clipboard="foto@klaus-mitterhauser.at">foto@klaus-mitterhauser.at</span></p>
+                <p>Telefon: <span class="contact-link" data-clipboard="+43 664 5145364">+43 664 5145364</span></p>
+                <p><a href="https://www.klaus-mitterhauser.at/" target="_blank" class="contact-link">klaus-mitterhauser.at</a></p>
+                <a href="https://www.instagram.com/Klaus_Mitterhauser/" target="_blank" class="contact-link">
+					<img src="bilder/insta_w.png" alt="Instagram" class="contact-icon">
+					<span class="instagram-label">Klaus</span>
+				</a>
+            </div>
 
-      <p class="form-note">Deine Angaben verwende ich nur, um deine Anfrage zu beantworten. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+            <div class="contact-person">
+                <h3>Sebastian Pillinger</h3>
+                <p>Email: <span class="contact-link" data-clipboard="foto@sebastian-pillinger.at">foto@sebastian-pillinger.at</span></p>
+                <p>Telefon: <span class="contact-link" data-clipboard="+43 677 62026186">+43 677 62026186</span></p>
+                <p><a href="https://www.sebastian-pillinger.at/" target="_blank" class="contact-link">sebastian-pillinger.at</a></p>
+                <a href="https://www.instagram.com/sebastianpillinger?vrfl=dW5scGVoMWFhdmlr" target="_blank" class="contact-link">
+					<img src="bilder/insta_w.png" alt="Instagram" class="contact-icon">
+					<span class="instagram-label">Sebastian</span>
+				</a>
+            </div>
+        </div>
 
-      <button type="submit" class="btn btn-full">E-Mail absenden</button>
-    </form>
-  </div>
-</section>
+		<!-- Option 1: Gemeinsamer Gastropix Instagram-Kanal zentriert darunter -->
+        <div class="contact-gastropix-social">
+            <p>Mehr Einblicke auf unserem Instagram-Projektkanal:</p>
+            <a href="https://www.instagram.com/_gastropix?vrfl=OGJ1ZnJudGp3aGRr" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <img src="bilder/insta_w.png" alt="Instagram" class="contact-icon">
+                <span class="instagram-label">@gastropix</span>
+            </a>
+        </div>	
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Klaus Mitterhauser &amp; Sebastian Pillinger – Alle Rechte vorbehalten</p>
+        <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+    </footer>
+    <!-- Externe JavaScript-Datei -->
+	
+	<script>
+		// Initialisiere Lightbox-Elemente
+		const lightbox = document.getElementById('lightbox');
+		const sliderContainer = document.getElementById('slider-container');
+		
+		const IMAGES_PER_LOAD = 9;
+		let visibleImages = 12; // Anfangs sichtbare Bilder
+		
+		// Dynamisches Einfügen der Bilder
+		const totalImages = 51;
+		const gallery = document.getElementById('gallery');
+		const loadMoreButton = document.getElementById('loadMore');
 
-</main>
+		// Bildergalerie erstellen
+		for (let i = 1; i <= totalImages; i++) {
+			const img = document.createElement('img');
+			img.src = `bilder/gastro_${i.toString().padStart(2, '0')}.jpg`;
+			img.alt = `Bild ${i}`;
+			img.loading = 'lazy';
+			img.onclick = () => openLightbox(i - 1);
+			gallery.appendChild(img);
+		}
+		
+		function preloadNeighbors(index) {
+			const prevIndex = (index - 1 + images.length) % images.length;
+			const nextIndex = (index + 1) % images.length;
+			new Image().src = images[prevIndex]; // Browser cached diese automatisch
+			new Image().src = images[nextIndex];
+		}
 
-<footer class="footer">
-  <div class="wrap footer-grid">
-    <div>
-      <p class="footer-brand">Sebastian Pillinger, MSc</p>
-      <p class="footer-text">Mathematik &amp; Physik Nachhilfe, online und bis zur Matura.</p>
-    </div>
-    <div>
-      <h3>Rechtliches</h3>
-      <ul>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-        <li><a href="agb.html">AGB</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Kontakt</h3>
-      <div class="social">
-        <a href="https://wa.me/4367762026186?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20gratis%20Probeeinheit%20vereinbaren." rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-        </a>
-        <a href="mailto:nachhilfe@sebastian-pillinger.at" aria-label="E-Mail">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Sebastian Pillinger, MSc &middot; Hauptstraße 26, 4563 Micheldorf, Ober&ouml;sterreich</p>
-  </div>
-</footer>
+		// Lightbox Funktionen
+		let currentIndex = 0;
+		let images = [];
+		let isAnimating = false;
+		let touchStartX = 0;
+		let touchStartY = 0;
+		let currentPosition = 0;
 
-<script>
-// Kontaktformular: Versand über FormSubmit ohne Seitenwechsel
-(function () {
-  var form = document.getElementById('contact-form');
-  var status = document.getElementById('form-status');
-  if (!form || !window.fetch) return; // ohne JavaScript: normaler Formular-Versand
+		function openLightbox(index) {
+			currentIndex = index;
+			preloadNeighbors(currentIndex);
+			images = Array.from(document.querySelectorAll('.gallery img'));
+			lightbox.classList.add('active');
+			document.body.style.overflow = 'hidden';
+			
+			// Slider vorbereiten
+			sliderContainer.innerHTML = '';
+			images.forEach((img, i) => {
+				const slide = document.createElement('div');
+				slide.className = 'slider-item';
+				slide.innerHTML = `<img src="${img.src}" alt="Bild ${i + 1}">`;
+				sliderContainer.appendChild(slide);
+			});
+			
+			currentPosition = -currentIndex * 100;
+			sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+		}
 
-  function show(text, ok) {
-    status.textContent = text;
-    status.className = 'form-status ' + (ok ? 'ok' : 'err');
-    status.hidden = false;
-  }
+		function closeLightbox() {
+			lightbox.classList.remove('active');
+			document.body.style.overflow = 'auto';
+		}
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    var oldText = btn.textContent;
-    btn.textContent = 'Wird gesendet …';
+		function changeImage(n, animate = false) {
+			const newIndex = (currentIndex + n + images.length) % images.length;
+			
+			if(animate) {
+				isAnimating = true;
+				sliderContainer.style.transition = 'transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1)';
+			} else {
+				sliderContainer.style.transition = 'none';
+			}
 
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
+			currentIndex = newIndex;
+			currentPosition = -currentIndex * 100;
+			sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+			preloadNeighbors(currentIndex);
+			
+			if(animate) {
+				sliderContainer.addEventListener('transitionend', () => {
+					isAnimating = false;
+				}, { once: true });
+			}
+		}
 
-    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(function (r) { return r.json(); })
-      .then(function (res) {
-        if (res.success === true || res.success === 'true') {
-          form.reset();
-          show('Danke! Deine Nachricht ist angekommen, ich melde mich so schnell wie möglich.', true);
-        } else {
-          throw new Error('fail');
+		function handleTouchMove(e) {
+			e.preventDefault();
+			if (isAnimating) return;
+			
+			const touchX = e.touches[0].clientX;
+			const touchY = e.touches[0].clientY;
+			const deltaX = touchX - touchStartX;
+			const deltaY = touchY - touchStartY;
+			const movePercentage = (deltaX / window.innerWidth) * 100;
+			let newPosition = currentPosition + movePercentage;
+			
+			if (Math.abs(deltaY) > Math.abs(deltaX)) {
+				e.preventDefault();
+				sliderContainer.style.transform = `translateY(${deltaY}px)`; // Bild bewegt sich mit
+				return;
+			}
+			
+			// Endlos-Scroll Logik
+			if(currentIndex === 0 && newPosition > 0) newPosition = -images.length * 100 + movePercentage;
+			if(currentIndex === images.length-1 && newPosition < -currentIndex * 100) newPosition = 100 + movePercentage;
+			
+			sliderContainer.style.transform = `translateX(${newPosition}%)`;
+		}
+
+		function handleTouchEnd(e) {
+			const endX = e.changedTouches[0].clientX;
+			const endY = e.changedTouches[0].clientY;
+			const deltaX = endX - touchStartX;
+			const deltaY = endY - touchStartY;
+
+			// Vertikales Wischen (Schließen bei >50px Bewegung)
+			if(Math.abs(deltaY) > 50) {
+				// Berechne Wischgeschwindigkeit für Animation
+				const velocity = Math.abs(deltaY) / (Date.now() - touchStartTime);
+				
+				// Füge CSS-Transition mit Geschwindigkeit hinzu
+				lightbox.style.transition = `opacity ${Math.min(0.3, 100/velocity)}s ease`;
+				closeLightbox();
+				return;
+			}
+
+			// Horizontales Wischen
+			if(Math.abs(deltaX) > window.innerWidth * 0.1) { // 10% der Bildschirmbreite
+				const direction = deltaX > 0 ? -1 : 1;
+				changeImage(direction, true);
+			} else {
+				sliderContainer.style.transform = `translateX(${currentPosition}%)`;
+			}
+		}
+		
+		// Touch-Start mit Zeitstempel
+		let touchStartTime;
+		function handleTouchStart(e) {
+			touchStartX = e.touches[0].clientX;
+			touchStartY = e.touches[0].clientY;
+			touchStartTime = Date.now();
+			sliderContainer.style.transition = 'none';
+		}
+
+		// Event Listener
+		lightbox.addEventListener('touchstart', handleTouchStart);
+		lightbox.addEventListener('touchmove', handleTouchMove);
+		lightbox.addEventListener('touchend', handleTouchEnd);
+
+		// Klick schließt Lightbox
+		lightbox.addEventListener('click', (e) => {
+			const isArrow = e.target.closest('.prev, .next');
+			if (!isArrow) {
+				closeLightbox();
+			}
+		});
+		
+		// Verhindern, dass Klicks auf die Pfeile die Lightbox schließen
+		document.querySelectorAll('.prev, .next').forEach(button => {
+			button.addEventListener('click', (e) => {
+				e.stopPropagation();
+			});
+		});
+
+
+		// Tastatursteuerung
+		document.addEventListener('keydown', (e) => {
+			if(lightbox.classList.contains('active')) {
+				if(e.key === 'ArrowLeft') changeImage(-1);
+				if(e.key === 'ArrowRight') changeImage(1);
+				if(e.key === 'Escape') closeLightbox();
+			}
+		});
+
+		// Weitere Funktionen (Load More Button, Smooth Scroll, etc.)
+		loadMoreButton.addEventListener('click', () => {
+		const allImages = Array.from(document.querySelectorAll('.gallery img'));
+		const firstNewIndex = visibleImages;       // Index des ersten Bildes, das gleich sichtbar wird
+		const lastNewIndex  = visibleImages + IMAGES_PER_LOAD - 1;
+
+		// 1) Nächsten Block anzeigen
+		for (let i = visibleImages; i < visibleImages + IMAGES_PER_LOAD; i++) {
+			if (allImages[i]) {
+				allImages[i].style.display = 'block';
+			}
+		}
+		visibleImages += IMAGES_PER_LOAD;
+
+		// 2) Button ausblenden, wenn alle Bilder vorhanden sind
+		if (visibleImages >= allImages.length) {
+			loadMoreButton.style.display = 'none';
+		}
+	});
+
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function(e) {
+				e.preventDefault();
+				const target = document.getElementById(this.getAttribute('href').substring(1));
+				if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				navLinks.classList.remove('open');
+				navToggle.setAttribute('aria-expanded', 'false');
+			});
+		});
+
+		// Burgermenü (nur mobil sichtbar)
+		const navToggle = document.getElementById('navToggle');
+		const navLinks = document.getElementById('navLinks');
+		navToggle.addEventListener('click', () => {
+			const isOpen = navLinks.classList.toggle('open');
+			navToggle.setAttribute('aria-expanded', isOpen);
+		});
+		(function() {
+		  const track      = document.querySelector('.slider-track');
+		  const slides     = Array.from(track.children);
+		  const prevBtn    = document.querySelector('.slider-arrow.prev');
+		  const nextBtn    = document.querySelector('.slider-arrow.next');
+		  const dotsWrap   = document.querySelector('.slider-dots');
+		  let   current    = 0;
+		  let   startX     = 0;
+		  let   isDragging = false;
+
+	  // Dots anlegen
+	  slides.forEach((_, i) => {
+		const dot = document.createElement('div');
+		dot.className = 'dot' + (i === 0 ? ' active' : '');
+		dot.addEventListener('click', () => goTo(i));
+		dotsWrap.append(dot);
+	  });
+	  const dots = Array.from(dotsWrap.children);
+
+	  function update() {
+		track.style.transform = `translateX(-${current * 100}%)`;
+		dots.forEach((d,i) => d.classList.toggle('active', i === current));
+	  }
+
+	  prevBtn.addEventListener('click', () => {
+		current = (current - 1 + slides.length) % slides.length;
+		update();
+	  });
+	  nextBtn.addEventListener('click', () => {
+		current = (current + 1) % slides.length;
+		update();
+	  });
+
+	  // Swipe Events
+	  track.addEventListener('touchstart', e => {
+		startX = e.touches[0].clientX;
+		isDragging = true;
+		track.style.transition = 'none';
+	  });
+	  track.addEventListener('touchmove', e => {
+		if (!isDragging) return;
+		const delta = e.touches[0].clientX - startX;
+		track.style.transform = `translateX(${ -current*100 + (delta/window.innerWidth*100) }%)`;
+	  });
+	  track.addEventListener('touchend', e => {
+		isDragging = false;
+		track.style.transition = 'transform 0.3s ease';
+		const delta = e.changedTouches[0].clientX - startX;
+		if (Math.abs(delta) > window.innerWidth * 0.2) {
+		  current = delta < 0
+			? (current + 1) % slides.length
+			: (current - 1 + slides.length) % slides.length;
+		}
+		update();
+	  });
+
+	  function goTo(idx) {
+		current = idx;
+		update();
+	  }
+	})();
+	
+	(function() {
+    function copyToClipboard(text, element) {
+      navigator.clipboard.writeText(text).then(() => {
+        if (!element.getAttribute('data-original')) {
+          element.setAttribute('data-original', element.innerText);
         }
-      })
-      .catch(function () {
-        show('Das hat leider nicht geklappt. Bitte versuche es nochmal oder schreib mir per WhatsApp.', false);
-      })
-      .then(function () {
-        btn.disabled = false;
-        btn.textContent = oldText;
+        element.innerText = "Kopiert!";
+        setTimeout(() => {
+          element.innerText = element.getAttribute('data-original');
+          element.removeAttribute('data-original');
+        }, 2000);
       });
-  });
-})();
-</script>
+    }
 
+    document.querySelectorAll('[data-clipboard]').forEach(el => {
+      el.addEventListener('click', () => {
+        copyToClipboard(el.getAttribute('data-clipboard'), el);
+      });
+    });
+  })();
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.services-container');
+    const dots = document.querySelectorAll('.carousel-indicators .dot');
+
+    /* Setzt die .active-Klasse auf den aktuellen Punkt */
+    function updateActiveDot(index) {
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[index]) {
+        dots[index].classList.add('active');
+      }
+    }
+
+    /* Beim Scrollen: berechne aktuellen Slide-Index und aktualisiere Dots */
+    container.addEventListener('scroll', () => {
+      const slideIndex = Math.round(container.scrollLeft / container.clientWidth);
+      updateActiveDot(slideIndex);
+    });
+
+    /* Klick auf Punkt: scrollt zum jeweiligen Slide */
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'), 10);
+        container.scrollTo({
+          left: index * container.clientWidth,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    /* Beim Fenster-Resize: Position beibehalten und Dot-Sync */
+    window.addEventListener('resize', () => {
+      const currentIndex = Math.round(container.scrollLeft / container.clientWidth);
+      container.scrollTo({ left: currentIndex * container.clientWidth });
+      updateActiveDot(currentIndex);
+    });
+  });
+
+	</script>
 </body>
 </html>
