@@ -680,7 +680,7 @@
 			anchor.addEventListener('click', function(e) {
 				e.preventDefault();
 				const target = document.getElementById(this.getAttribute('href').substring(1));
-				if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				if(target) target.schrollIntoView({ behavior: 'smooth', block: 'center' });
 				navLinks.classList.remove('open');
 				navToggle.setAttribute('aria-expanded', 'false');
 			});
