@@ -1010,6 +1010,11 @@
 		    text-decoration: none;
 		}
 
+		/* Sorgt dafür, dass Sprungmarken (wie der Anfrage-Button) nicht unter der fixierten Navbar landen */
+		section[id] {
+		  scroll-margin-top: 80px;
+		}
+
 		/* ========== RESPONSIVE DESIGN ========== */
 		@media (max-width: 768px) {
 			header {
